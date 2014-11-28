@@ -1,0 +1,53 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :group_id %><br>
+    <%= f.number_field :group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :what %><br>
+    <%= f.text_field :what %>
+  </div>
+  <div class="field">
+    <%= f.label :when %><br>
+    <%= f.text_field :when %>
+  </div>
+  <div class="field">
+    <%= f.label :why %><br>
+    <%= f.text_field :why %>
+  </div>
+  <div class="field">
+    <%= f.label :where %><br>
+    <%= f.text_field :where %>
+  </div>
+  <div class="field">
+    <%= f.label :who_created %><br>
+    <%= f.number_field :who_created %>
+  </div>
+  <div class="field">
+    <%= f.label :datetime_created %><br>
+    <%= f.datetime_select :datetime_created %>
+  </div>
+  <div class="field">
+    <%= f.label :who_updated %><br>
+    <%= f.number_field :who_updated %>
+  </div>
+  <div class="field">
+    <%= f.label :datetime_updated %><br>
+    <%= f.datetime_select :datetime_updated %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

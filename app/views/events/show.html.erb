@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @event.group_id %>
+</p>
+
+<p>
+  <strong>What:</strong>
+  <%= @event.what %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @event.when %>
+</p>
+
+<p>
+  <strong>Why:</strong>
+  <%= @event.why %>
+</p>
+
+<p>
+  <strong>Where:</strong>
+  <%= @event.where %>
+</p>
+
+<p>
+  <strong>Who created:</strong>
+  <%= @event.who_created %>
+</p>
+
+<p>
+  <strong>Datetime created:</strong>
+  <%= @event.datetime_created %>
+</p>
+
+<p>
+  <strong>Who updated:</strong>
+  <%= @event.who_updated %>
+</p>
+
+<p>
+  <strong>Datetime updated:</strong>
+  <%= @event.datetime_updated %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

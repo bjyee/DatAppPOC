@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: 
+  password: 
+  firstname: 
+  lastname: 
+  is_admin: false
+  is_editor: false
+  is_viewer: false
+
+two:
+  username: 
+  password: 
+  firstname: 
+  lastname: 
+  is_admin: false
+  is_editor: false
+  is_viewer: false
