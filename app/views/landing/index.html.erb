@@ -1,1 +1,63 @@
-<h1>Welcome to Dat App Thp</h1>
+<!--
+This Page will have login in features and info scrolling
+-->
+
+<!-- Just for this page -->
+<%= stylesheet_link_tag    'landing_index' %>
+<%= javascript_include_tag 'landing_index' %>
+
+<body>
+  <div id="headerBar" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div id="header_logo" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <h1>DAT App Tho</h1>
+    </div>
+    <div id="intro_action" class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+      <a class="btn btn-primary signin-btn">Sign In</a>
+    </div>
+  </div>
+  <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+    <div id="intro_welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Youtube Vid on how awesome we are. Or maybe some kind of slideshow. -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        Slideshow here
+      </div>
+    </div>
+    <div id="intro_desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Description -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_features" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Features -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_signup" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Signup -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <!-- Footer -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+  </div>
+  <div id="login_overlay" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection" style="display:none">
+    <div id="login" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+      <div id="login_esc" >
+        <h1 class="close_login">X</h1>
+      </div>
+      <h2>Login</h2>
+      <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        Email:<input type="text" class="form-control"/>
+      </div>
+      <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        Password:<input type="password" class="form-control"/>
+      </div>
+      <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <a class="btn btn-primary submit-btn">Submit</a>
+        <div id="login_intro_signup">or <a class="signup-btn">Sign up here</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  dat.init();
+</script>

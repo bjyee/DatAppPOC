@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   get "sign_up" => "users#new", :as => "sign_up"
 
-  get "landing/home"
+  get "landing/index"
 
-  root :to => "landing#home"
+  root :to => "landing#index"
 
   resources :users
 
