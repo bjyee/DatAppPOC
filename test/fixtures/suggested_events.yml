@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  location_id: 1
-  category_id: 1
-  what: 
-  when: 
-  datetime_created: 2014-11-28 20:02:06
+  location_id: 
+  category_id: 
+  what: MyString
+  when: MyString
+  datetime_created: 2014-11-28 20:22:21
 
 two:
-  location_id: 1
-  category_id: 1
-  what: 
-  when: 
-  datetime_created: 2014-11-28 20:02:06
+  location_id: 
+  category_id: 
+  what: MyString
+  when: MyString
+  datetime_created: 2014-11-28 20:22:21

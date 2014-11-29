@@ -1,23 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  group_id: 1
-  what: 
-  when: 
-  why: 
-  where: 
-  who_created: 1
-  datetime_created: 2014-11-28 18:03:40
-  who_updated: 1
-  datetime_updated: 2014-11-28 18:03:40
+  group_id_id: 
+  what: MyString
+  when: MyString
+  why: MyString
+  where: MyString
+  who_created_id: 
+  datetime_created: 2014-11-28 20:19:20
+  who_updated_id: 
+  datetime_updated: 2014-11-28 20:19:20
 
 two:
-  group_id: 1
-  what: 
-  when: 
-  why: 
-  where: 
-  who_created: 1
-  datetime_created: 2014-11-28 18:03:40
-  who_updated: 1
-  datetime_updated: 2014-11-28 18:03:40
+  group_id_id: 
+  what: MyString
+  when: MyString
+  why: MyString
+  where: MyString
+  who_created_id: 
+  datetime_created: 2014-11-28 20:19:20
+  who_updated_id: 
+  datetime_updated: 2014-11-28 20:19:20

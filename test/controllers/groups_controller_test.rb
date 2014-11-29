@@ -18,7 +18,7 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "should create group" do
     assert_difference('Group.count') do
-      post :create, group: { based_in: @group.based_in, datetime_create: @group.datetime_create, datetime_updated: @group.datetime_updated, image: @group.image, name: @group.name, who_created: @group.who_created, who_updated: @group.who_updated }
+      post :create, group: { based_in_id: @group.based_in_id, datetime_created: @group.datetime_created, datetime_updated: @group.datetime_updated, image: @group.image, name: @group.name, who_created_id: @group.who_created_id, who_updated_id: @group.who_updated_id }
     end
 
     assert_redirected_to group_path(assigns(:group))
@@ -35,7 +35,7 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "should update group" do
-    patch :update, id: @group, group: { based_in: @group.based_in, datetime_create: @group.datetime_create, datetime_updated: @group.datetime_updated, image: @group.image, name: @group.name, who_created: @group.who_created, who_updated: @group.who_updated }
+    patch :update, id: @group, group: { based_in_id: @group.based_in_id, datetime_created: @group.datetime_created, datetime_updated: @group.datetime_updated, image: @group.image, name: @group.name, who_created_id: @group.who_created_id, who_updated_id: @group.who_updated_id }
     assert_redirected_to group_path(assigns(:group))
   end
 

@@ -18,7 +18,7 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should create event" do
     assert_difference('Event.count') do
-      post :create, event: { datetime_created: @event.datetime_created, datetime_updated: @event.datetime_updated, group_id: @event.group_id, what: @event.what, when: @event.when, where: @event.where, who_created: @event.who_created, who_updated: @event.who_updated, why: @event.why }
+      post :create, event: { datetime_created: @event.datetime_created, datetime_updated: @event.datetime_updated, group_id_id: @event.group_id_id, what: @event.what, when: @event.when, where: @event.where, who_created_id: @event.who_created_id, who_updated_id: @event.who_updated_id, why: @event.why }
     end
 
     assert_redirected_to event_path(assigns(:event))
@@ -35,7 +35,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should update event" do
-    patch :update, id: @event, event: { datetime_created: @event.datetime_created, datetime_updated: @event.datetime_updated, group_id: @event.group_id, what: @event.what, when: @event.when, where: @event.where, who_created: @event.who_created, who_updated: @event.who_updated, why: @event.why }
+    patch :update, id: @event, event: { datetime_created: @event.datetime_created, datetime_updated: @event.datetime_updated, group_id_id: @event.group_id_id, what: @event.what, when: @event.when, where: @event.where, who_created_id: @event.who_created_id, who_updated_id: @event.who_updated_id, why: @event.why }
     assert_redirected_to event_path(assigns(:event))
   end
 

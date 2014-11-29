@@ -11,9 +11,85 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141129010206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.integer  "group_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.integer  "group_id"
+    t.string   "what"
+    t.string   "when"
+    t.string   "why"
+    t.string   "where"
+    t.integer  "who_created"
+    t.datetime "datetime_created"
+    t.integer  "who_updated"
+    t.datetime "datetime_updated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "datetime_create"
+    t.datetime "datetime_updated"
+    t.integer  "who_created"
+    t.integer  "who_updated"
+    t.integer  "based_in"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suggested_events", force: true do |t|
+    t.integer  "location_id"
+    t.integer  "category_id"
+    t.string   "what"
+    t.string   "when"
+    t.datetime "datetime_created"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_locations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.boolean  "is_admin"
+    t.boolean  "is_editor"
+    t.boolean  "is_viewer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

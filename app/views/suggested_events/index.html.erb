@@ -15,8 +15,8 @@
   <tbody>
     <% @suggested_events.each do |suggested_event| %>
       <tr>
-        <td><%= suggested_event.location_id %></td>
-        <td><%= suggested_event.category_id %></td>
+        <td><%= suggested_event.location %></td>
+        <td><%= suggested_event.category %></td>
         <td><%= suggested_event.what %></td>
         <td><%= suggested_event.when %></td>
         <td><%= suggested_event.datetime_created %></td>

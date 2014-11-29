@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
+  resources :locations
+
   resources :suggested_events
-
-  resources :categories
-
-  resources :user_locations
 
   resources :events
 
   resources :groups
-
-  resources :members
-
-  resources :followings
 
   resources :users
 

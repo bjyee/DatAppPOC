@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  image: 
-  datetime_create: 2014-11-28 17:46:57
-  datetime_updated: 2014-11-28 17:46:57
-  who_created: 1
-  who_updated: 1
-  based_in: 1
+  name: MyString
+  image: MyString
+  who_created_id: 
+  datetime_created: 2014-11-28 20:17:38
+  who_updated_id: 
+  datetime_updated: 2014-11-28 20:17:38
+  based_in_id: 
 
 two:
-  name: 
-  image: 
-  datetime_create: 2014-11-28 17:46:57
-  datetime_updated: 2014-11-28 17:46:57
-  who_created: 1
-  who_updated: 1
-  based_in: 1
+  name: MyString
+  image: MyString
+  who_created_id: 
+  datetime_created: 2014-11-28 20:17:38
+  who_updated_id: 
+  datetime_updated: 2014-11-28 20:17:38
+  based_in_id: 
