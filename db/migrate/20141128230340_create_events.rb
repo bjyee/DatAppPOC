@@ -2,10 +2,10 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.integer :group_id
-      t.String :what
-      t.String :when
-      t.String :why
-      t.String :where
+      t.string :what
+      t.string :when
+      t.string :why
+      t.string :where
       t.integer :who_created
       t.datetime :datetime_created
       t.integer :who_updated

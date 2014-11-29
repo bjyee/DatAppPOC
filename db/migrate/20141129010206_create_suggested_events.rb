@@ -3,8 +3,8 @@ class CreateSuggestedEvents < ActiveRecord::Migration
     create_table :suggested_events do |t|
       t.integer :location_id
       t.integer :category_id
-      t.String :what
-      t.String :when
+      t.string :what
+      t.string :when
       t.datetime :datetime_created
 
       t.timestamps

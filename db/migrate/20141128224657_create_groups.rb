@@ -1,8 +1,8 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
-      t.String :name
-      t.String :image
+      t.string :name
+      t.string :image
       t.datetime :datetime_create
       t.datetime :datetime_updated
       t.integer :who_created
