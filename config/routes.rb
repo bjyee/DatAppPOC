@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :suggested_events
+
+  resources :categories
+
+  resources :user_locations
+
   resources :events
 
   resources :groups

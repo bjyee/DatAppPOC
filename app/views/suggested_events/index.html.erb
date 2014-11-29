@@ -1,0 +1,33 @@
+<h1>Listing suggested_events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Category</th>
+      <th>What</th>
+      <th>When</th>
+      <th>Datetime created</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suggested_events.each do |suggested_event| %>
+      <tr>
+        <td><%= suggested_event.location_id %></td>
+        <td><%= suggested_event.category_id %></td>
+        <td><%= suggested_event.what %></td>
+        <td><%= suggested_event.when %></td>
+        <td><%= suggested_event.datetime_created %></td>
+        <td><%= link_to 'Show', suggested_event %></td>
+        <td><%= link_to 'Edit', edit_suggested_event_path(suggested_event) %></td>
+        <td><%= link_to 'Destroy', suggested_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Suggested event', new_suggested_event_path %>

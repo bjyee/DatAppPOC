@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @suggested_event.location_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @suggested_event.category_id %>
+</p>
+
+<p>
+  <strong>What:</strong>
+  <%= @suggested_event.what %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @suggested_event.when %>
+</p>
+
+<p>
+  <strong>Datetime created:</strong>
+  <%= @suggested_event.datetime_created %>
+</p>
+
+<%= link_to 'Edit', edit_suggested_event_path(@suggested_event) %> |
+<%= link_to 'Back', suggested_events_path %>
