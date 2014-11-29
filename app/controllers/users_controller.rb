@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
-  end
-
   # GET /users
   # GET /users.json
   def index
@@ -29,15 +25,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      # format.html { redirect_to @user, notice: 'User was successfully created.' }
+      # format.json { render :show, status: :created, location: @user }
+      redirect_to root_url, :flash => { :signup_notice => "Thank you for signing up! You can log in now." }
+    else
+      # format.html { render :new }
+      # format.json { render json: @user.errors, status: :unprocessable_entity }
+      redirect_to root_url(:anchor => "intro_signup"), :flash => { :signup_error => "There was an error. Please make sure all " }
     end
   end
 
@@ -73,6 +68,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :firstname, :lastname, :is_admin, :is_editor, :is_viewer)
+      params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname, :is_admin, :is_editor, :is_viewer)
     end
 end

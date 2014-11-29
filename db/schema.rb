@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "user_locations", ["user_id"], name: "index_user_locations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
+    t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "firstname"

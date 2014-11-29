@@ -101,10 +101,7 @@ dat = {
           dat.ui.closeLogin();
           dat.ui.scrollToSignup();
         }
-        //if submit button, submit
-        if(className.indexOf("submit-btn") != -1){
-
-        }
+        
         //if exit button, well... exit
         if(className.indexOf("close_login") != -1){
           dat.ui.closeLogin();

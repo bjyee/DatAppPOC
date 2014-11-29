@@ -14,6 +14,13 @@ This Page will have login in features and info scrolling
     <div id="intro_action" class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
       <a class="btn btn-primary signin-btn">Sign In</a>
     </div>
+    <!-- Flash Notice -->
+    <% if flash[:signup_notice] %>
+      <p class="alert alert-info"><%= flash[:signup_notice] %></p>
+    <% end %>
+    <% if flash[:signup_error] %>
+      <p class="alert alert-error"><%= flash[:signup_error] %></p>
+    <% end %>
   </div>
   <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
     <div id="intro_welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
@@ -37,7 +44,32 @@ This Page will have login in features and info scrolling
     <div id="intro_signup" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
       <!-- Signup -->
       <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-        Sign up form here
+        <div class="signup_box_space col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        </div>
+        <div class="signup_box  col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <h2>Sign up now</h2>
+          <%= form_tag users_path do %>
+            <div id="signup_name" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field", :style => "float:right" %>
+              <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field" %>
+            </div>
+            <div id="signup_email" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= text_field_tag "user[email]", nil, :placeholder => "Email", :class => "full-field signup-field" %>
+            </div>
+            <div id="signup_password" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= password_field_tag "user[password]", nil, :placeholder => "New Password", :class => "full-field signup-field" %>
+            </div>
+            <div id="signup_password_confirmed" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= password_field_tag "user[password_confirmation]", nil, :placeholder => "Confirm New Password", :class => "full-field signup-field" %>
+            </div>
+            <div id="signup_submit" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <%= hidden_field_tag "user[is_admin]", false %>
+              <%= hidden_field_tag "user[is_editor]", false %>
+              <%= hidden_field_tag "user[is_viewer]", false %>
+              <%= button_tag "Sign Up", class: "btn btn-primary signup-submit-btn" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
     <div id="intro_footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -53,16 +85,22 @@ This Page will have login in features and info scrolling
         <h1 class="close_login">X</h1>
       </div>
       <h2>Login</h2>
-      <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        Email:<input type="text" class="form-control"/>
-      </div>
-      <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        Password:<input type="password" class="form-control"/>
-      </div>
-      <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <a class="btn btn-primary submit-btn">Submit</a>
-        <div id="login_intro_signup">or <a class="signup-btn">Sign up here</a></div>
-      </div>
+      <%= form_tag log_in_path do %>
+        <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <%= label_tag :email %><br />
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+        <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <%= label_tag :password %><br />
+          <%= password_field_tag :password %>
+        </div>
+        <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <%= button_tag "Log in", class: "btn btn-primary submit-btn" %>
+          <div id="login_intro_signup">
+            or <a class="signup-btn">Sign up here</a>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </body>
