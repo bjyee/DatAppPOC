@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129010206) do
+ActiveRecord::Schema.define(version: 20141129012311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,19 +23,25 @@ ActiveRecord::Schema.define(version: 20141129010206) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["group_id"], name: "index_categories_on_group_id", using: :btree
+
   create_table "events", force: true do |t|
-    t.integer  "group_id"
+    t.integer  "group_id_id"
     t.string   "what"
     t.string   "when"
     t.string   "why"
     t.string   "where"
-    t.integer  "who_created"
+    t.integer  "who_created_id"
     t.datetime "datetime_created"
-    t.integer  "who_updated"
+    t.integer  "who_updated_id"
     t.datetime "datetime_updated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["group_id_id"], name: "index_events_on_group_id_id", using: :btree
+  add_index "events", ["who_created_id"], name: "index_events_on_who_created_id", using: :btree
+  add_index "events", ["who_updated_id"], name: "index_events_on_who_updated_id", using: :btree
 
   create_table "followings", force: true do |t|
     t.integer  "user_id"
@@ -44,14 +50,31 @@ ActiveRecord::Schema.define(version: 20141129010206) do
     t.datetime "updated_at"
   end
 
+  add_index "followings", ["group_id"], name: "index_followings_on_group_id", using: :btree
+  add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "datetime_create"
+    t.integer  "who_created_id"
+    t.datetime "datetime_created"
+    t.integer  "who_updated_id"
     t.datetime "datetime_updated"
-    t.integer  "who_created"
-    t.integer  "who_updated"
-    t.integer  "based_in"
+    t.integer  "based_in_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["based_in_id"], name: "index_groups_on_based_in_id", using: :btree
+  add_index "groups", ["who_created_id"], name: "index_groups_on_who_created_id", using: :btree
+  add_index "groups", ["who_updated_id"], name: "index_groups_on_who_updated_id", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,6 +86,9 @@ ActiveRecord::Schema.define(version: 20141129010206) do
     t.datetime "updated_at"
   end
 
+  add_index "members", ["group_id"], name: "index_members_on_group_id", using: :btree
+  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
+
   create_table "suggested_events", force: true do |t|
     t.integer  "location_id"
     t.integer  "category_id"
@@ -73,12 +99,18 @@ ActiveRecord::Schema.define(version: 20141129010206) do
     t.datetime "updated_at"
   end
 
+  add_index "suggested_events", ["category_id"], name: "index_suggested_events_on_category_id", using: :btree
+  add_index "suggested_events", ["location_id"], name: "index_suggested_events_on_location_id", using: :btree
+
   create_table "user_locations", force: true do |t|
     t.integer  "user_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_locations", ["location_id"], name: "index_user_locations_on_location_id", using: :btree
+  add_index "user_locations", ["user_id"], name: "index_user_locations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
