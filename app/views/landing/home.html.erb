@@ -1,0 +1,284 @@
+<!--
+This Page will have login in features and info scrolling
+-->
+
+
+  <!-- Custom CSS3 Styles -->
+  <style>
+  body{
+    color: #111;
+  }
+
+  a {
+    cursor:pointer;
+  }
+
+  #headerBar{
+    position:fixed;
+    top: 0px;
+    left:0px;
+    z-index:9999;
+    min-height:100px;
+    color:#000;
+
+  }
+
+  #header_logo h1{
+    margin:0px;
+    line-height:100px;
+  }
+
+  #intro_action{
+    margin-top:1.35em;
+    text-align:right;
+  }
+
+  #login{
+    position:absolute;
+    top: 25%;
+    padding:25px;
+    background-color:#fff;
+    color:#000;
+    border-radius: 15px;
+    border: 2px #AAA solid;
+  }
+
+  #login h2, #login h1{
+    margin-top: 0px;
+  }
+
+  #login_overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:9999;
+    width:100%;
+    height:100%;
+    background: rgba(100,100,100,0.5);
+  }
+
+  #login_esc{
+    float:right;
+    cursor: pointer;
+  }
+
+  #login_intro_signup{
+    padding: 20px 0px;
+  }
+
+  #login_submit{
+    margin-top: 1.36em;
+  }
+
+  #scrollBody{
+    position:absolute;
+    top:0px;
+    left:0px;
+  }
+
+  #scrollBody{
+    padding: 0;
+  }
+
+  #intro_welcome{
+    background-color:#fff;
+  }
+
+  #intro_footer{
+    background-color:#000;
+  }
+
+  .introSection{
+    background-color:#222;
+  }
+
+  .borderbox{
+    margin-top: 125px;
+  }
+</style>
+
+<!-- Custom JQuery Scripts -->
+<script>
+  dat = {
+    pg : {
+
+    },
+    ui : {
+      resizeDiv : function(win){
+        $(".introSection").each(function(){
+          $(this).css({
+            "min-height" : win+"px"
+          });
+        });
+      },
+      checkMin : function(){
+        //check to see if window is too small. if too small dont resize smaller
+        var h = $(window).height();
+        if(h <= 600){
+          //min size
+          dat.ui.resizeDiv(815);
+        }else{
+          dat.ui.resizeDiv(h);
+        }
+      },
+      scrollToSignup : function(){
+        var targetPos = $("#intro_signup").offset().top;
+        $('html, body').animate({scrollTop:targetPos}, 'slow');
+      },
+      changeHeaderWhite : function(){
+        $("#headerBar").css({
+          "color" : "#FFF",
+        });
+      },
+      changeHeaderBlack : function(){
+        $("#headerBar").css({
+          "color" : "#000",
+        });
+      },
+      fadeColors : function(s,e,p){
+        var d = e - s;
+        var np = p - s;
+        var hex = Math.round(255 * (np/d));
+        $("#headerBar").css({
+          "color" : "rgb("+hex+","+hex+","+hex+")",
+        });
+      },
+      openLogin : function(){
+        //show overlay
+        $("#login_overlay").show();
+        //disable scrolling
+        $("body").attr("style", "overflow:hidden");
+      },
+      closeLogin : function(){
+        //hide overlay
+        $("#login_overlay").hide();
+        //enable scrolling
+        $("body").removeAttr("style");
+      }
+    },
+    ctl : {
+      bindEvents : function(){
+        $(window).resize(function(){
+          dat.ui.checkMin();
+        });
+
+        $(window).on("scroll", function(){
+          var buffer = 50;
+          var start = $("#intro_welcome").height() - $("#headerBar").height() - buffer;
+          var end = $("#intro_welcome").height() + buffer;
+          var position = $(document).scrollTop();
+          if(start < position && position < end){
+            dat.ui.fadeColors(start, end, position);
+          }else if(position >= end){
+            dat.ui.changeHeaderWhite();
+          }else{
+            dat.ui.changeHeaderBlack();
+          }
+        });
+
+        $("#headerBar").on("click", function(e){
+          e.preventDefault();
+          var target = $(e.target);
+          var className = "";
+          if(typeof target.attr("class") != "undefined"){
+            className = target.attr("class");
+          }
+
+          //if sign in, open overlay
+          if(className.indexOf("signin-btn") != -1){
+            dat.ui.openLogin();
+          }
+        });
+
+        $("#login_overlay").on("click", function(e){
+          e.preventDefault();
+          var target = $(e.target);
+          var className = "";
+          if(typeof target.attr("class") != "undefined"){
+            className = target.attr("class");
+          }
+          //if sign up button, scroll down to sign up div
+          if(className.indexOf("signup-btn") != -1){
+            dat.ui.closeLogin();
+            dat.ui.scrollToSignup();
+          }
+          //if submit button, submit
+          if(className.indexOf("submit-btn") != -1){
+
+          }
+          //if exit button, well... exit
+          if(className.indexOf("close_login") != -1){
+            dat.ui.closeLogin();
+          }
+        });
+      },
+
+      submitLogin : function (){
+
+      },
+
+      submitSignup : function(){
+
+      }
+    },
+    init : function(){
+      dat.ui.checkMin();
+      dat.ctl.bindEvents();
+    }
+  };
+</script>
+<body>
+  <div id="headerBar" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div id="header_logo" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <h1>DAT App Tho</h1>
+    </div>
+    <div id="intro_action" class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+      <a class="btn btn-primary signin-btn">Sign In</a>
+    </div>
+  </div>
+  <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+    <div id="intro_welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Youtube Vid on how awesome we are. Or maybe some kind of slideshow. -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        Slideshow here
+      </div>
+    </div>
+    <div id="intro_desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Description -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_features" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Features -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_signup" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+      <!-- Signup -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+    <div id="intro_footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <!-- Footer -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"></div>
+    </div>
+  </div>
+  <div id="login_overlay" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection" style="display:none">
+    <div id="login" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+      <div id="login_esc" >
+        <h1 class="close_login">X</h1>
+      </div>
+      <h2>Login</h2>
+      <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        Email:<input type="text" class="form-control"/>
+      </div>
+      <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        Password:<input type="password" class="form-control"/>
+      </div>
+      <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <a class="btn btn-primary submit-btn">Submit</a>
+        <div id="login_intro_signup">or <a class="signup-btn">Sign up here</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  dat.init();
+</script>
