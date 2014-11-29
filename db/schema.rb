@@ -114,7 +114,8 @@ ActiveRecord::Schema.define(version: 20141129012311) do
 
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.string   "firstname"
     t.string   "lastname"
     t.boolean  "is_admin"
