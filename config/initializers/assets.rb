@@ -14,4 +14,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css )
 
 Rails.application.config.assets.precompile += %w( landing_index.css )
 
-# Images
+# Maps
+
+Rails.application.config.assets.precompile += %w( bootstrap-theme.css.map )
+Rails.application.config.assets.precompile += %w( bootstrap.css.map )
