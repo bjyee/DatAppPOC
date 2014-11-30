@@ -45,7 +45,7 @@ This Page will have login in features and info scrolling
       <!-- Signup -->
       <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
         <div class="signup_box_space col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          
+
         </div>
         <div class="signup_box  col-xs-12 col-sm-12 col-md-6 col-lg-6">
           <h2>Sign up now</h2>
@@ -86,14 +86,14 @@ This Page will have login in features and info scrolling
         <h1 class="close_login">X</h1>
       </div>
       <h2>Login</h2>
-      <%= form_tag log_in_path do %>
+      <%= form_tag sessions_path do %>
         <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= label_tag :email %><br />
-          <%= text_field_tag :email, params[:email] %>
+          <%= text_field_tag "session[email]" %>
         </div>
         <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= label_tag :password %><br />
-          <%= password_field_tag :password %>
+          <%= password_field_tag "session[password]" %>
         </div>
         <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= button_tag "Log in", class: "btn btn-primary submit-btn" %>

@@ -90,7 +90,6 @@ dat = {
       });
 
       $("#login_overlay").on("click", function(e){
-        e.preventDefault();
         var target = $(e.target);
         var className = "";
         if(typeof target.attr("class") != "undefined"){
@@ -101,7 +100,7 @@ dat = {
           dat.ui.closeLogin();
           dat.ui.scrollToSignup();
         }
-        
+
         //if exit button, well... exit
         if(className.indexOf("close_login") != -1){
           dat.ui.closeLogin();

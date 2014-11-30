@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 6, :message => "At least 6 characters"
-  validates_format_of :password, :with => /^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/, :message => "Must be at least 6 characters, one number, one uppercase, and one special character"
+  # validates_format_of :password, :with => /^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/, :message => "Must be at least 6 characters, one number, one uppercase, and one special character"
 
   validates_presence_of :email
   validates_uniqueness_of :email
