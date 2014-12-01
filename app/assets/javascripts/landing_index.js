@@ -53,6 +53,11 @@ dat = {
       $("#login_overlay").hide();
       //enable scrolling
       $("body").removeAttr("style");
+    },
+    hideAlert : function(){
+      setTimeout(function(){
+        $(".alert").fadeOut("slow");
+      },1000);
     }
   },
   ctl : {

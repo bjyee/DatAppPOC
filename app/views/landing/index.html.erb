@@ -16,10 +16,28 @@ This Page will have login in features and info scrolling
     </div>
     <!-- Flash Notice -->
     <% if flash[:signup_notice] %>
-      <p class="alert alert-info"><%= flash[:signup_notice] %></p>
+      <p class="alert alert-info bg-success"><%= flash[:signup_notice] %></p>
+      <script>
+        dat.ui.hideAlert();
+        // had to put a delay for some reason
+        setTimeout(dat.ui.openLogin, 10);
+      </script>
     <% end %>
     <% if flash[:signup_error] %>
-      <p class="alert alert-error"><%= flash[:signup_error] %></p>
+      <p class="alert alert-error bg-danger"><%= flash[:signup_error] %></p>
+      <script>
+        dat.ui.hideAlert();
+        // had to put a delay for some reason
+        setTimeout(dat.ui.scrollToSignup, 10);
+      </script>
+    <% end %>
+    <% if flash[:login_error] %>
+      <p class="alert alert-error bg-danger"><%= flash[:login_error] %></p>
+      <script>
+        dat.ui.hideAlert();
+        // had to put a delay for some reason
+        setTimeout(dat.ui.openLogin, 10);
+      </script>
     <% end %>
   </div>
   <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">

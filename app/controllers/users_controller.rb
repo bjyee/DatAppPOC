@@ -24,15 +24,18 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    if @user.save
-      # format.html { redirect_to @user, notice: 'User was successfully created.' }
-      # format.json { render :show, status: :created, location: @user }
-      redirect_to root_url, :flash => { :signup_notice => "Thank you for signing up! You can log in now." }
-    else
-      # format.html { render :new }
-      # format.json { render json: @user.errors, status: :unprocessable_entity }
-      redirect_to root_url(:anchor => "intro_signup"), :flash => { :signup_error => "There was an error. Please make sure all " }
+    respond_to do |format|
+      @user = User.new(user_params)
+      if @user.save
+        # redirect_to root_url, :flash => { :signup_notice => "Thank you for signing up! You can log in now." }
+        format.html { redirect_to root_url, :flash => { :signup_notice => "Thank you for signing up! You can log in now." } }
+        format.js   { render :js => "dat.ui.openLogin();" }
+
+      else
+        # redirect_to root_url(:anchor => "intro_signup"), :flash => { :signup_error => "There was an error. Please make sure all fields are correct." }
+        format.html { redirect_to root_url(:anchor => "intro_signup"), :flash => { :signup_error => "There was an error. Please make sure all fields are correct." } }
+        format.js   { render :js => "dat.ui.scrollToSignup();" }
+      end
     end
   end
 
