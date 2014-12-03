@@ -16,7 +16,7 @@ This Page will have login in features and info scrolling
     </div>
     <!-- Flash Notice -->
     <% if flash[:signup_notice] %>
-      <p class="alert alert-info bg-success"><%= flash[:signup_notice] %></p>
+      <p class="alert alert-info banner bg-success"><%= flash[:signup_notice] %></p>
       <script>
         dat.ui.hideAlert();
         // had to put a delay for some reason
@@ -24,19 +24,11 @@ This Page will have login in features and info scrolling
       </script>
     <% end %>
     <% if flash[:signup_error] %>
-      <p class="alert alert-error bg-danger"><%= flash[:signup_error] %></p>
+      <p class="alert alert-error banner bg-danger"><%= flash[:signup_error] %></p>
       <script>
         dat.ui.hideAlert();
         // had to put a delay for some reason
         setTimeout(dat.ui.scrollToSignup, 10);
-      </script>
-    <% end %>
-    <% if flash[:login_error] %>
-      <p class="alert alert-error bg-danger"><%= flash[:login_error] %></p>
-      <script>
-        dat.ui.hideAlert();
-        // had to put a delay for some reason
-        setTimeout(dat.ui.openLogin, 10);
       </script>
     <% end %>
   </div>
@@ -69,8 +61,8 @@ This Page will have login in features and info scrolling
           <h2>Sign up now</h2>
           <%= form_tag users_path do %>
             <div id="signup_name" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field", :style => "float:right" %>
-              <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field" %>
+              <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field", :style => "float:left" %>
+              <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field" %>
             </div>
             <div id="signup_email" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <%= text_field_tag "user[email]", nil, :placeholder => "Email", :class => "full-field signup-field" %>
@@ -104,7 +96,9 @@ This Page will have login in features and info scrolling
         <h1 class="close_login">X</h1>
       </div>
       <h2>Login</h2>
-      <%= form_tag sessions_path do %>
+      <!-- Alert here -->
+        <div id="login_error" class="alert alert-error bg-danger" style="display:none"></div>
+      <%= form_tag sessions_path, :name => 'login_form' do %>
         <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= label_tag :email %><br />
           <%= text_field_tag "session[email]" %>

@@ -57,7 +57,7 @@ dat = {
     hideAlert : function(){
       setTimeout(function(){
         $(".alert").fadeOut("slow");
-      },1000);
+      },3000);
     }
   },
   ctl : {
@@ -95,6 +95,7 @@ dat = {
       });
 
       $("#login_overlay").on("click", function(e){
+        e.preventDefault();
         var target = $(e.target);
         var className = "";
         if(typeof target.attr("class") != "undefined"){
@@ -106,6 +107,11 @@ dat = {
           dat.ui.scrollToSignup();
         }
 
+        // login
+        if(className.indexOf("submit-btn") != -1){
+          dat.ctl.submitLogin();
+        }
+
         //if exit button, well... exit
         if(className.indexOf("close_login") != -1){
           dat.ui.closeLogin();
@@ -114,7 +120,18 @@ dat = {
     },
 
     submitLogin : function (){
-
+      var data = $("form[name=login_form]").serialize();
+      $.ajax({
+        url : "/sessions",
+        type : "POST",
+        data : data,
+        success : function(value){
+          // not really success. If this pops up, it means it failed
+          $("#login_error").show();
+          $("#login_error").html(value);
+          dat.ui.hideAlert();
+        }
+      });
     },
 
     submitSignup : function(){

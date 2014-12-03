@@ -10,10 +10,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to groups_url, :notice => "Logged in!"
       else
-        # flash.now.alert = "Invalid email or password"
-        # redirect_to root_url, :flash => { :login_error => "Invalid email or password" }
-        format.html { redirect_to root_url, :flash => { :login_error => "Invalid email or password" } }
-        # format.js   { render :js => dat.ui.openLogin(); }
+        format.html { render :inline => 'Invalid Email or Password'}
       end
     end
   end

@@ -7,11 +7,15 @@ a {
 }
 
 .alert{
+  width:100%;
+}
+
+.banner{
   position:absolute;
   top:85px;
   left:0px;
   z-index:1000;
-  width:100%;
+  color:#000;
 }
 
 .introSection{
@@ -34,6 +38,10 @@ a {
 
 .signup_box, .signup_box_space{
   margin-top:75px;
+}
+
+.signup_box input{
+  float:right;
 }
 
 .signup-btn{
