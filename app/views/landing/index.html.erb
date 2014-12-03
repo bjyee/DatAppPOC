@@ -101,11 +101,11 @@ This Page will have login in features and info scrolling
       <%= form_tag sessions_path, :name => 'login_form' do %>
         <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= label_tag :email %><br />
-          <%= text_field_tag "session[email]" %>
+          <%= text_field_tag "session[email]", nil, :style => "width:100%" %>
         </div>
         <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= label_tag :password %><br />
-          <%= password_field_tag "session[password]" %>
+          <%= password_field_tag "session[password]", nil, :style => "width:100%" %>
         </div>
         <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <%= button_tag "Log in", class: "btn btn-primary submit-btn" %>
