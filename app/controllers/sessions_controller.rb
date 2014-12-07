@@ -4,14 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      user = User.authenticate(params[:email], params[:password])
-      if user
-        session[:user_id] = user.id
-        redirect_to groups_url, :notice => "Logged in!"
-      else
-        format.html { render :inline => 'Invalid Email or Password'}
-      end
+    user = User.authenticate(params[:session][:email], params[:session][:password])
+    if user
+      session[:user_id] = user.id
+      redirect_to groups_path
+    else
+      render :inline => 'Invalid Email or Password'
     end
   end
 

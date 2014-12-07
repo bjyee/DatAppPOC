@@ -126,10 +126,16 @@ dat = {
         type : "POST",
         data : data,
         success : function(value){
-          // not really success. If this pops up, it means it failed
-          $("#login_error").show();
-          $("#login_error").html(value);
-          dat.ui.hideAlert();
+          console.log(value.redirect);
+          if(value.redirect){
+            window.location.href = data.redirect;
+          }else{
+            // not really success. If this pops up, it means it failed
+            $("#login_error").show();
+            $("#login_error").html(value);
+            dat.ui.hideAlert();
+          }
+
         }
       });
     },
