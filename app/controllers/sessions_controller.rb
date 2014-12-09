@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email], params[:session][:password])
     if user
       session[:user_id] = user.id
-      redirect_to groups_path
+      render :inline => groups_url
     else
       render :inline => 'Invalid Email or Password'
     end

@@ -126,9 +126,8 @@ dat = {
         type : "POST",
         data : data,
         success : function(value){
-          console.log(value.redirect);
-          if(value.redirect){
-            window.location.href = data.redirect;
+          if(value.indexOf("http") != -1){
+            window.location.href = value;
           }else{
             // not really success. If this pops up, it means it failed
             $("#login_error").show();
