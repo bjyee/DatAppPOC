@@ -6,7 +6,8 @@ class GroupsController < ApplicationController
   def index
     userid =  session[:user_id]
     # @groups = Group.all
-    @groups = Group.joins(:user).where(:users => {:user_id => userid})
+    # grabs the groups based on the user logged in
+    @groups = Group.joins(:user).where(:users => {:id => userid})
   end
 
   # GET /groups/1
@@ -26,12 +27,34 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    # initialize the group variable
+    @group = Group.new
+
+    @group.name = group_params[:name]
+
+    # image? not sure how we will do this one
+    @group.image = group_params[:image]
+
+    # date created and updated will be now
+    @group.datetime_created = Date.today.to_datetime
+    @group.datetime_updated = Date.today.to_datetime
+
+    # for new groups, the creator and editor is the person who is signed in
+    @group.who_created_id = session[:user_id]
+    @group.who_updated_id = session[:user_id]
+
+    # Send to location to get the based_in_id
+    locationId = Location.getLocationId(group_params[:city],group_params[:state])
+    if(locationId)
+      @group.based_in_id = locationId
+    else
+      @group.based_in_id = Location.createByCityState(group_params[:city],group_params[:state])
+    end
 
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        format.json { render :index, status: :created, location: @group }
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
