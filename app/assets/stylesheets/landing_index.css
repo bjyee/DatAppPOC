@@ -6,18 +6,6 @@ a {
   cursor:pointer;
 }
 
-.alert{
-  width:100%;
-}
-
-.banner{
-  position:absolute;
-  top:85px;
-  left:0px;
-  z-index:1000;
-  color:#000;
-}
-
 .introSection{
   background-color:#555;
   position:relative;
@@ -30,10 +18,6 @@ a {
 
 .borderbox input{
    color: #000;
-}
-
-.submit-btn{
-  float: left;
 }
 
 .signup_box, .signup_box_space{
@@ -70,71 +54,13 @@ a {
 }
 
 .signup-submit-btn{
-  width:300px;
+  width:100%;
   font-size:20px;
-}
-
-#headerBar{
-  position:fixed;
-  top: 0px;
-  left:0px;
-  z-index:9999;
-  min-height:100px;
-  color:#000;
-}
-
-#header_logo h1{
-  margin:0px;
-  line-height:100px;
 }
 
 #intro_action{
   margin-top:1.35em;
   text-align:right;
-}
-
-#login{
-  position:absolute;
-  top: 25%;
-  padding:25px;
-  background-color:#fff;
-  color:#000;
-  border-radius: 15px;
-  border: 2px #AAA solid;
-}
-
-#login h2, #login h1{
-  margin-top: 0px;
-}
-
-#login_overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:9999;
-  width:100%;
-  height:100%;
-  background: rgba(100,100,100,0.5);
-}
-
-#login_esc{
-  float:right;
-  cursor: pointer;
-}
-
-#login_intro_signup{
-  padding: 5px 0px;
-  text-align: right;
-}
-
-#login_submit{
-  margin-top: 1.36em;
-}
-
-#scrollBody{
-  position:absolute;
-  top:0px;
-  left:0px;
 }
 
 #scrollBody{
@@ -147,8 +73,4 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-#intro_footer{
-  background-color:#000;
 }

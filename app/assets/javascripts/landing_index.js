@@ -1,4 +1,4 @@
-dat = {
+dat_landing = {
   pg : {
 
   },
@@ -15,9 +15,9 @@ dat = {
       var h = $(window).height();
       if(h <= 600){
         //min size
-        dat.ui.resizeDiv(815);
+        dat_landing.ui.resizeDiv(815);
       }else{
-        dat.ui.resizeDiv(h);
+        dat_landing.ui.resizeDiv(h);
       }
     },
     scrollToSignup : function(){
@@ -45,8 +45,6 @@ dat = {
     openLogin : function(){
       //show overlay
       $("#login_overlay").show();
-      //disable scrolling
-      $("body").attr("style", "overflow:hidden");
     },
     closeLogin : function(){
       //hide overlay
@@ -63,7 +61,7 @@ dat = {
   ctl : {
     bindEvents : function(){
       $(window).resize(function(){
-        dat.ui.checkMin();
+        dat_landing.ui.checkMin();
       });
 
       $(window).on("scroll", function(){
@@ -72,11 +70,11 @@ dat = {
         var end = $("#intro_welcome").height() + buffer;
         var position = $(document).scrollTop();
         if(start < position && position < end){
-          dat.ui.fadeColors(start, end, position);
+          dat_landing.ui.fadeColors(start, end, position);
         }else if(position >= end){
-          dat.ui.changeHeaderWhite();
+          dat_landing.ui.changeHeaderWhite();
         }else{
-          dat.ui.changeHeaderBlack();
+          dat_landing.ui.changeHeaderBlack();
         }
       });
 
@@ -88,9 +86,16 @@ dat = {
           className = target.attr("class");
         }
 
+/*
         //if sign in, open overlay
         if(className.indexOf("signin-btn") != -1){
-          dat.ui.openLogin();
+          dat_landing.ui.openLogin();
+        }*/
+
+        
+        // login
+        if(className.indexOf("submit-btn") != -1){
+          dat_landing.ctl.submitLogin();
         }
       });
 
@@ -103,18 +108,18 @@ dat = {
         }
         //if sign up button, scroll down to sign up div
         if(className.indexOf("signup-btn") != -1){
-          dat.ui.closeLogin();
-          dat.ui.scrollToSignup();
+          dat_landing.ui.closeLogin();
+          dat_landing.ui.scrollToSignup();
         }
 
         // login
         if(className.indexOf("submit-btn") != -1){
-          dat.ctl.submitLogin();
+          dat_landing.ctl.submitLogin();
         }
 
         //if exit button, well... exit
         if(className.indexOf("close_login") != -1){
-          dat.ui.closeLogin();
+          dat_landing.ui.closeLogin();
         }
       });
     },
@@ -132,7 +137,7 @@ dat = {
             // not really success. If this pops up, it means it failed
             $("#login_error").show();
             $("#login_error").html(value);
-            dat.ui.hideAlert();
+            dat_landing.ui.hideAlert();
           }
 
         }
@@ -144,7 +149,7 @@ dat = {
     }
   },
   init : function(){
-    dat.ui.checkMin();
-    dat.ctl.bindEvents();
+    dat_landing.ui.checkMin();
+    dat_landing.ctl.bindEvents();
   }
 };

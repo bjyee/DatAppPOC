@@ -7,31 +7,6 @@ This Page will have login in features and info scrolling
 <%= javascript_include_tag 'landing_index' %>
 
 <body>
-  <div id="headerBar" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div id="header_logo" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <h1>DAT App Tho</h1>
-    </div>
-    <div id="intro_action" class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
-      <a class="btn btn-primary signin-btn">Sign In</a>
-    </div>
-    <!-- Flash Notice -->
-    <% if flash[:signup_notice] %>
-      <p class="alert alert-info banner bg-success"><%= flash[:signup_notice] %></p>
-      <script>
-        dat.ui.hideAlert();
-        // had to put a delay for some reason
-        setTimeout(dat.ui.openLogin, 10);
-      </script>
-    <% end %>
-    <% if flash[:signup_error] %>
-      <p class="alert alert-error banner bg-danger"><%= flash[:signup_error] %></p>
-      <script>
-        dat.ui.hideAlert();
-        // had to put a delay for some reason
-        setTimeout(dat.ui.scrollToSignup, 10);
-      </script>
-    <% end %>
-  </div>
   <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
     <div id="intro_welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
       <!-- Youtube Vid on how awesome we are. Or maybe some kind of slideshow. -->
@@ -61,17 +36,17 @@ This Page will have login in features and info scrolling
           <h2>Sign up now</h2>
           <%= form_tag users_path do %>
             <div id="signup_name" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field", :style => "float:left" %>
-              <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field" %>
+              <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field form-control", :style => "float:left" %>
+              <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field form-control" %>
             </div>
             <div id="signup_email" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= text_field_tag "user[email]", nil, :placeholder => "Email", :class => "full-field signup-field" %>
+              <%= text_field_tag "user[email]", nil, :placeholder => "Email", :class => "full-field signup-field form-control" %>
             </div>
             <div id="signup_password" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= password_field_tag "user[password]", nil, :placeholder => "New Password", :class => "full-field signup-field" %>
+              <%= password_field_tag "user[password]", nil, :placeholder => "New Password", :class => "full-field signup-field form-control" %>
             </div>
             <div id="signup_password_confirmed" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= password_field_tag "user[password_confirmation]", nil, :placeholder => "Confirm New Password", :class => "full-field signup-field" %>
+              <%= password_field_tag "user[password_confirmation]", nil, :placeholder => "Confirm New Password", :class => "full-field signup-field form-control" %>
             </div>
             <div id="signup_submit" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <%= hidden_field_tag "user[is_admin]", false %>
@@ -83,40 +58,8 @@ This Page will have login in features and info scrolling
         </div>
       </div>
     </div>
-    <div id="intro_footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <!-- Footer -->
-      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-        Footer
-      </div>
-    </div>
   </div>
-  <div id="login_overlay" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection" style="display:none">
-    <div id="login" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
-      <div id="login_esc" >
-        <h1 class="close_login">X</h1>
-      </div>
-      <h2>Login</h2>
-      <!-- Alert here -->
-        <div id="login_error" class="alert alert-error bg-danger" style="display:none"></div>
-      <%= form_tag sessions_path, :name => 'login_form' do %>
-        <div id="login_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <%= label_tag :email %><br />
-          <%= text_field_tag "session[email]", nil, :style => "width:100%" %>
-        </div>
-        <div id="login_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <%= label_tag :password %><br />
-          <%= password_field_tag "session[password]", nil, :style => "width:100%" %>
-        </div>
-        <div id="login_submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <%= button_tag "Log in", class: "btn btn-primary submit-btn" %>
-          <div id="login_intro_signup">
-            or <a class="signup-btn">Sign up here</a>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</body>
+  </body>
 <script>
-  dat.init();
+  dat_landing.init();
 </script>

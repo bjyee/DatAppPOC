@@ -18,9 +18,51 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div id="headerBar" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div id="header_logo" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h1>hangoutScout</h1>
+        </div>
+        <div id="intro_action" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <% if session[:user_id] != nil %>
+            	<div id="banner_username"><%= User.find(session[:user_id]).firstname %> <%= User.find(session[:user_id]).lastname %></div>
+            <% else %>
+            	<%= form_tag sessions_path, :name => 'login_form' do %>
+	            	<%= text_field_tag "session[email]", nil, placeholder: "Email", class: "form-control" %>
+	          		<%= password_field_tag "session[password]", nil, placeholder: "Password", class: "form-control" %>
+	          		<%= button_tag "Log in", class: "btn btn-primary submit-btn" %>
+    		  	<% end %>
+		      <!-- Alert here -->
+		        <div id="login_error" class="alert" style="display:none"></div>
+        	<% end %>
+        </div>
+        <!-- Landing Flash Notice -->
+        <% if flash[:signup_notice] %>
+            <p class="alert alert-info banner bg-success"><%= flash[:signup_notice] %></p>
+            <script>
+                dat_landing.ui.hideAlert();
+                // had to put a delay for some reason
+                setTimeout(dat_landing.ui.openLogin, 10);
+            </script>
+        <% end %>
+        <% if flash[:signup_error] %>
+            <p class="alert alert-error banner bg-danger"><%= flash[:signup_error] %></p>
+            <script>
+                dat_landing.ui.hideAlert();
+                // had to put a delay for some reason
+                setTimeout(dat_landing.ui.scrollToSignup, 10);
+            </script>
+        <% end %>
+    </div>
+    <div id="applicationBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    	<%= yield %>
+    </div>
 
-
-    <%= yield %>
+    <div id="footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <!-- Footer -->
+      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        Footer
+      </div>
+    </div>
 
   </body>
 </html>
