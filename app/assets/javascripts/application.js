@@ -14,3 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+theme = {
+	pg : {
+		
+	},
+	ui : {
+		setBodyHeight: function(){
+// 			need to get footer height and the page height
+			var pageH = $(window).height();
+			var footerH = $("#footer").height();
+			var minHeight = pageH - footerH;
+// 			now set the body height of the content to this.
+			$("#applicationBody").css("min-height", minHeight+"px");
+		}
+	},
+	ctl : {
+		resizeBodyHeight : function(){
+	      	$(window).resize(function(){
+				theme.ui.setBodyHeight();	     
+	      	});
+		}
+	},
+	init : function(){
+		theme.ui.setBodyHeight();	
+		theme.ctl.resizeBodyHeight();	
+	}
+}

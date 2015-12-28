@@ -1,34 +1,56 @@
-<%= stylesheet_link_tag    'group_index' %>
-<%= javascript_include_tag 'group_index' %>
-
-<h1>Listing groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Datetime created</th>
-      <th>Datetime updated</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.image %></td>
-        <td><%= group.datetime_created %></td>
-        <td><%= group.datetime_updated %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
+<div class="contentWrapper col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+	<%= stylesheet_link_tag    'group_index' %>
+	<%= javascript_include_tag 'group_index' %>
+	
+	<!-- THis is for groups that have upcoming events. Upcoming is usually within the next week -->
+	<div id="groups_upcoming">
+		<div class="groupsHeader">
+			Groups with Upcoming events
+		</div>
+		<% @upcomingGroups.each do |upcomingGroup| %>
+			
+	    <% end %>
+	</div>
+	
+	<!-- This is for the rest of the groups that you participate in -->
+	<div id="groups_rest">
+		<div class="groupsHeader">
+			Other Groups you are subscribed to
+		</div>
+		<% @restGroups.each do |restGroup| %>
+		
+	    <% end %>
+	</div>
+	
+	<!-- <h1>Listing groups</h1>
+	
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Image</th>
+	      <th>Datetime created</th>
+	      <th>Datetime updated</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	    <% @groups.each do |group| %>
+	      <tr>
+	        <td><%= group.name %></td>
+	        <td><%= group.image %></td>
+	        <td><%= group.datetime_created %></td>
+	        <td><%= group.datetime_updated %></td>
+	        <td><%= link_to 'Show', group %></td>
+	        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+	        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	
+	<br>
+	
+	<%= link_to 'New Group', new_group_path %> -->
+</div>

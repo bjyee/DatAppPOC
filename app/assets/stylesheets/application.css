@@ -23,7 +23,7 @@
   top:85px;
   left:0px;
   z-index:1000;
-  color:#000;
+  color:#333;
 }
 
 .borderbox{
@@ -32,7 +32,11 @@
 }
 
 .borderbox input{
-   color: #000;
+   color: #333;
+}
+
+.contentWrapper{
+	padding-top:100px;
 }
 
 #headerBar{
@@ -53,13 +57,19 @@
 	padding:0px;
 }
 
+#intro_action{
+  text-align:right;
+  line-height:100px;
+}
+
+
 #intro_action input{
 	width: auto;
 	display:inline-block;
 }
 
 #footer{
-  background-color:#000;
+  background-color:#333;
 }
 
 #login_error{

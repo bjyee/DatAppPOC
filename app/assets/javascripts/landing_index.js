@@ -24,24 +24,6 @@ dat_landing = {
       var targetPos = $("#intro_signup").offset().top;
       $('html, body').animate({scrollTop:targetPos}, 'slow');
     },
-    changeHeaderWhite : function(){
-      $("#headerBar").css({
-        "color" : "#FFF",
-      });
-    },
-    changeHeaderBlack : function(){
-      $("#headerBar").css({
-        "color" : "#000",
-      });
-    },
-    fadeColors : function(s,e,p){
-      var d = e - s;
-      var np = p - s;
-      var hex = Math.round(255 * (np/d));
-      $("#headerBar").css({
-        "color" : "rgb("+hex+","+hex+","+hex+")",
-      });
-    },
     openLogin : function(){
       //show overlay
       $("#login_overlay").show();
@@ -62,20 +44,6 @@ dat_landing = {
     bindEvents : function(){
       $(window).resize(function(){
         dat_landing.ui.checkMin();
-      });
-
-      $(window).on("scroll", function(){
-        var buffer = 50;
-        var start = $("#intro_welcome").height() - $("#headerBar").height() - buffer;
-        var end = $("#intro_welcome").height() + buffer;
-        var position = $(document).scrollTop();
-        if(start < position && position < end){
-          dat_landing.ui.fadeColors(start, end, position);
-        }else if(position >= end){
-          dat_landing.ui.changeHeaderWhite();
-        }else{
-          dat_landing.ui.changeHeaderBlack();
-        }
       });
 
       $("#headerBar").on("click", function(e){
