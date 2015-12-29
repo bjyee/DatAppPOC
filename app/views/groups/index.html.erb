@@ -8,7 +8,14 @@
 			Groups with Upcoming events
 		</div>
 		<% @upcomingGroups.each do |upcomingGroup| %>
-			
+			<div class="group">
+				<div class="groupImage">
+					<img src="<%= upcomingGroup.image %>" />
+				</div>
+				<div class="groupName"><%= upcomingGroup.name %></div>
+				<div class="groupDescription">Created by <%= upcomingGroup.firstname %> <%= upcomingGroup.lastname %></div>
+				
+			</div>
 	    <% end %>
 	</div>
 	
