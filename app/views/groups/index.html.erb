@@ -1,33 +1,49 @@
-<div class="contentWrapper col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+<div class="contentWrapper col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" >
 	<%= stylesheet_link_tag    'group_index' %>
 	<%= javascript_include_tag 'group_index' %>
 	
-	<!-- THis is for groups that have upcoming events. Upcoming is usually within the next week -->
-	<div id="groups_upcoming">
-		<div class="groupsHeader">
-			Groups with Upcoming events
-		</div>
-		<% @upcomingGroups.each do |upcomingGroup| %>
-			<div class="group">
-				<div class="groupImage">
-					<img src="<%= upcomingGroup.image %>" />
-				</div>
-				<div class="groupName"><%= upcomingGroup.name %></div>
-				<div class="groupDescription">Created by <%= upcomingGroup.firstname %> <%= upcomingGroup.lastname %></div>
-				
+	<!-- This is for groups that have upcoming events. Upcoming is usually within the next week -->
+	<% if @upcomingGroups.length == 0 %>
+		<div id="groups_upcoming" class='panel panel-default'>
+			<div class="panel-heading">
+				Groups with Upcoming events
 			</div>
-	    <% end %>
-	</div>
+			<div class='panel-body'>
+				<% @upcomingGroups.each do |upcomingGroup| %>
+					<div class="group">
+						<div class="groupImage">
+							<img src="<%= upcomingGroup.image %>" />
+						</div>
+						<div class="groupName"><%= upcomingGroup.name %></div>
+						<div class="groupDescription">Created by <%= upcomingGroup.firstname %> <%= upcomingGroup.lastname %></div>
+						
+					</div>
+			    <% end %>
+		    </div>
+		</div>
+	<% end %>
 	
 	<!-- This is for the rest of the groups that you participate in -->
-	<div id="groups_rest">
-		<div class="groupsHeader">
-			Other Groups you are subscribed to
+	
+	<% if @restGroups.length > 0 %>
+		<div id="groups_rest" class='panel panel-default'>
+			<div class="panel-heading">
+				Other Groups you are subscribed to
+			</div>
+			<div class='panel-body'>
+				<% @restGroups.each do |restGroup| %>
+				
+			    <% end %>
+			</div>
 		</div>
-		<% @restGroups.each do |restGroup| %>
-		
-	    <% end %>
+    <% end %>
+	
+	<!-- If there is no groups in any section, show this message -->
+	<% if @restGroups.length == 0 && @upcomingGroups.length == 0 %>
+	<div id="groups_empty">
+		There are no groups available. <br>You can either create a new one or join an existing group!
 	</div>
+	<% end %>
 	
 	<!-- <h1>Listing groups</h1>
 	

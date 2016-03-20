@@ -2,10 +2,14 @@ source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.6'
+
+# Upgrading Rake
+gem 'rake', '10.4.2'
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '1.3.9'
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.18.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -27,7 +31,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem "bcrypt-ruby", :require => "bcrypt"
+# gem "bcrypt-ruby", :require => "bcrypt"
 
 # Use unicorn as the app server
 # gem 'unicorn'

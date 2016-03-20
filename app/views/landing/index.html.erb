@@ -7,48 +7,48 @@ This Page will have login in features and info scrolling
 <%= javascript_include_tag 'landing_index' %>
 
 <body>
-  <div id="scrollBody" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
-    <div id="intro_welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+  <div id="scrollBody" class="col-lg-12 introSection">
+    <div id="intro_welcome" class="col-lg-12 introSection">
       <!-- Youtube Vid on how awesome we are. Or maybe some kind of slideshow. -->
-      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+      <div class="borderbox col-xs-12 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
         Slideshow here
       </div>
     </div>
-    <div id="intro_desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+    <div id="intro_desc" class="col-lg-12 introSection">
       <!-- Description -->
-      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+      <div class="borderbox col-xs-12 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
         Description Of DAT App Tho
       </div>
     </div>
-    <div id="intro_features" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+    <div id="intro_features" class="col-lg-12 introSection">
       <!-- Features -->
-      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+      <div class="borderbox col-xs-12 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
         Features of DAT App Tho
       </div>
     </div>
-    <div id="intro_signup" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 introSection">
+    <div id="intro_signup" class="col-lg-12 introSection">
       <!-- Signup -->
-      <div class="borderbox col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-        <div class="signup_box_space col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="borderbox col-xs-12 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        <div class="signup_box_space col-sm-12 col-lg-6">
 
         </div>
-        <div class="signup_box  col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="signup_box col-sm-12 col-lg-6">
           <h2>Sign up now</h2>
           <%= form_tag users_path do %>
-            <div id="signup_name" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="signup_name" class="signup-div col-lg-12">
               <%= text_field_tag "user[firstname]", nil, :placeholder => "First Name", :class => "half-field signup-field form-control", :style => "float:left" %>
               <%= text_field_tag "user[lastname]", nil, :placeholder => "Last Name", :class => "half-field signup-field form-control" %>
             </div>
-            <div id="signup_email" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="signup_email" class="signup-div col-lg-12">
               <%= text_field_tag "user[email]", nil, :placeholder => "Email", :class => "full-field signup-field form-control" %>
             </div>
-            <div id="signup_password" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="signup_password" class="signup-div col-lg-12">
               <%= password_field_tag "user[password]", nil, :placeholder => "New Password", :class => "full-field signup-field form-control" %>
             </div>
-            <div id="signup_password_confirmed" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="signup_password_confirmed" class="signup-div col-lg-12">
               <%= password_field_tag "user[password_confirmation]", nil, :placeholder => "Confirm New Password", :class => "full-field signup-field form-control" %>
             </div>
-            <div id="signup_submit" class="signup-div col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="signup_submit" class="signup-div col-lg-12">
               <%= hidden_field_tag "user[is_admin]", false %>
               <%= hidden_field_tag "user[is_editor]", false %>
               <%= hidden_field_tag "user[is_viewer]", false %>

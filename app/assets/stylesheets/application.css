@@ -1,4 +1,4 @@
-/*
+form-inline/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -37,9 +37,12 @@
 
 .contentWrapper{
 	padding-top:100px;
-}
+}/*
 
-#headerBar{
+#applicationBackground{
+	background-color:#CCCCCC;
+}*/
+/*#headerBar{
   position:fixed;
   top: 0px;
   left:0px;
@@ -51,22 +54,20 @@
 #header_logo h1{
   margin:0px;
   line-height:100px;
-}
-
+}*/
 #applicationBody{
 	padding:0px;
 }
 
-#intro_action{
+/*#intro_action{
   text-align:right;
   line-height:100px;
 }
 
-
 #intro_action input{
 	width: auto;
 	display:inline-block;
-}
+}*/
 
 #footer{
   background-color:#333;
