@@ -7,13 +7,11 @@ a {
 }
 
 .introSection{
-  background-color:#555;
   position:relative;
 }
 
 .borderbox{
   margin-top: 125px;
-  color: #fff;
 }
 
 .borderbox input{

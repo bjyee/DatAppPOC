@@ -18,17 +18,20 @@ form-inline/*
   width:100%;
 }
 
-.banner{
+/*.banner{
   position:absolute;
   top:85px;
   left:0px;
   z-index:1000;
   color:#333;
+}*/
+
+#intro_action{
+	margin-right:0px;
 }
 
 .borderbox{
   margin-top: 125px;
-  color: #fff;
 }
 
 .borderbox input{
@@ -37,37 +40,11 @@ form-inline/*
 
 .contentWrapper{
 	padding-top:100px;
-}/*
-
-#applicationBackground{
-	background-color:#CCCCCC;
-}*/
-/*#headerBar{
-  position:fixed;
-  top: 0px;
-  left:0px;
-  z-index:9999;
-  min-height:100px;
-  color:#000;
 }
 
-#header_logo h1{
-  margin:0px;
-  line-height:100px;
-}*/
 #applicationBody{
 	padding:0px;
 }
-
-/*#intro_action{
-  text-align:right;
-  line-height:100px;
-}
-
-#intro_action input{
-	width: auto;
-	display:inline-block;
-}*/
 
 #footer{
   background-color:#333;

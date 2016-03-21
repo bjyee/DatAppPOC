@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Datapptho</title>
+    <title>HangoutScout</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -34,7 +34,7 @@
     					<li><a href="#">View Profile</a></li>
     					<li><a href="#">Preferences</a></li>
            	 			<li role="separator" class="divider"></li>
-    					<li><a href="#">Logout</a></li>
+    					<li><%= link_to 'Logout', log_out_path %></li>
     				</ul>
             	</div>
             <% else %>
@@ -48,8 +48,8 @@
             		<div class='form-group'>
 	     	     		<%= button_tag "Log in", class: "btn btn-default submit-btn" %>
             		</div>
-    		  	<% end %>
-		      <!-- Alert here -->
+				<% end %>
+		      	<!-- Alert here -->
 		        <div id="login_error" class="alert" style="display:none"></div>
         	<% end %>
         </div>
