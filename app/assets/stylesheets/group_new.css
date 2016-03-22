@@ -1,0 +1,17 @@
+.indMem{
+	cursor:pointer;
+	padding:10px;
+	border-radius:5px;
+}
+
+.indMem:hover{
+	background-color: #DDDDDD;
+}
+
+.indMem:active{
+	background-color: #CCCCCC;
+}
+
+#memberSelect{
+	max-height: 500px;
+}

@@ -24,6 +24,8 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    
+    @availMembers = User.all
   end
 
   # GET /groups/1/edit
@@ -56,6 +58,9 @@ class GroupsController < ApplicationController
     else
       @group.based_in_id = Location.createByCityState(group_params[:city],group_params[:state])
     end
+    
+    #Take list and add them as members
+    @members = group_params[:members]
 
     respond_to do |format|
       if @group.save
