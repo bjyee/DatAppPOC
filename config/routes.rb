@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#create", :as => "log_in"
 
   get "sign_up" => "users#create", :as => "sign_up"
+  
+  get "memberSearch" => "users#search", :as => "memberSearch"
 
   get "landing/index"
 

@@ -6,6 +6,15 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+  
+  def search
+    # Need to not include members who are already selected. Maybe pass in those already selected? Or do some join magic
+    @users = User.where("firstname LIKE ? OR lastname LIKE ?", "%"+params[:search]+"%", "%"+params[:search]+"%");
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @users}
+    end
+  end
 
   # GET /users/1
   # GET /users/1.json
