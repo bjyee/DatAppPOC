@@ -9,8 +9,6 @@ class LandingController < ApplicationController
   def auth_check
     if session[:user_id] != nil
       redirect_to groups_url
-    else
-      redirect_to root_url
     end
   end
 
