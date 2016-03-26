@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.integer  "group_id"
     t.string   "name"
     t.datetime "created_at"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
 
   add_index "categories", ["group_id"], name: "index_categories_on_group_id", using: :btree
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "group_id_id"
     t.string   "what"
     t.string   "when"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "events", ["who_created_id"], name: "index_events_on_who_created_id", using: :btree
   add_index "events", ["who_updated_id"], name: "index_events_on_who_updated_id", using: :btree
 
-  create_table "followings", force: true do |t|
+  create_table "followings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "followings", ["group_id"], name: "index_followings_on_group_id", using: :btree
   add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
 
-  create_table "groups", force: true do |t|
+  create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
     t.text     "description"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "groups", ["who_created_id"], name: "index_groups_on_who_created_id", using: :btree
   add_index "groups", ["who_updated_id"], name: "index_groups_on_who_updated_id", using: :btree
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.float    "longitude"
     t.float    "latitude"
     t.string   "address"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
     t.datetime "updated_at"
   end
 
-  create_table "members", force: true do |t|
+  create_table "members", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "members", ["group_id"], name: "index_members_on_group_id", using: :btree
   add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
-  create_table "suggested_events", force: true do |t|
+  create_table "suggested_events", force: :cascade do |t|
     t.integer  "location_id"
     t.integer  "category_id"
     t.string   "what"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "suggested_events", ["category_id"], name: "index_suggested_events_on_category_id", using: :btree
   add_index "suggested_events", ["location_id"], name: "index_suggested_events_on_location_id", using: :btree
 
-  create_table "user_locations", force: true do |t|
+  create_table "user_locations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "location_id"
     t.datetime "created_at"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "user_locations", ["location_id"], name: "index_user_locations_on_location_id", using: :btree
   add_index "user_locations", ["user_id"], name: "index_user_locations_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"

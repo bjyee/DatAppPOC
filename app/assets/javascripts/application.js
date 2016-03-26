@@ -40,4 +40,4 @@ theme = {
 		theme.ui.setBodyHeight();	
 		theme.ctl.resizeBodyHeight();	
 	}
-}
+};

@@ -1,0 +1,33 @@
+.indMem{
+	cursor:pointer;
+	padding:10px;
+	border-radius:5px;
+}
+
+.indMem:hover{
+	background-color: #DDDDDD;
+}
+
+.indMem:active{
+	background-color: #CCCCCC;
+}
+
+#memberSelect{
+	max-height: 500px;
+}
+
+#searchInput{
+	border:none;
+}
+
+#searchInput:active, #searchInput:focus{
+	outline:none;
+}
+
+#membersSearched{
+	border-bottom: #CCC solid 1px;
+}
+
+#membersEmpty{
+	text-align: center;
+}

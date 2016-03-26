@@ -1,7 +1,3 @@
-
-.groupsHeader{
-	font-weight:bold;
-	text-decoration: underline;	
-	font-size:1.5em;
-	padding:5px 0px;
+#groups_empty{
+	text-align:center;
 }

@@ -9,10 +9,10 @@ class GroupsController < ApplicationController
     # grabs the groups based on the user logged in
     @groups = Group.joins(:user).where(:users => {:id => userid})
     
-#   I need groups that are upcoming
+    # I need groups that are upcoming
     @upcomingGroups = Group.joins(:user).where(:users => {:id => userid})
     
-#   Then the rest of the groups that are not upcoming
+    # Then the rest of the groups that are not upcoming
     @restGroups = Group.joins(:user).where(:users => {:id => userid})
   end
 
@@ -24,6 +24,8 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    # Need some logic from members joint table
+    @availMembers = User.where("1 = 0")
   end
 
   # GET /groups/1/edit
@@ -56,6 +58,9 @@ class GroupsController < ApplicationController
     else
       @group.based_in_id = Location.createByCityState(group_params[:city],group_params[:state])
     end
+    
+    #Take list and add them as members
+    @members = group_params[:members]
 
     respond_to do |format|
       if @group.save
