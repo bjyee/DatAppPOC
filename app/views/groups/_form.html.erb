@@ -22,7 +22,6 @@
   
   <div class="form-group">
   	<%= f.hidden_field :members, :value => @members, :id => 'membersHidden'%>
-  	<div>
   	<%= f.label "Members" %>
   	<div class='pull-right'>
   		<%= f.hidden_field "membersPath", :value => memberSearch_path, :id => 'membersPath'%>
@@ -31,6 +30,9 @@
   	</div>
   	
   	<div id="memberSelect" class="well col-lg-12">
+  		<div class='col-lg-12'>
+  			<span id="searchResultsSpan" class="help-block"></span>
+  		</div>
   		<div id="membersSearched" class='col-lg-12' style="display:none">
   			
   		</div>
@@ -52,8 +54,13 @@
   </div>
 
   <div class="actions pull-right">
-    <%= link_to 'Cancel', groups_path, :class => 'btn btn-default'%>
-    <%= f.submit "Create Group", :class => 'btn btn-primary' %>
+    <% if @group.persisted? %>
+    	<%= link_to 'Cancel', group_path(@group.id), :class => 'btn btn-default'%>
+    	<%= f.submit "Submit", :class => 'btn btn-primary' %>
+    <% else %>
+    	<%= link_to 'Cancel', groups_path, :class => 'btn btn-default'%>
+    	<%= f.submit "Create Group", :class => 'btn btn-primary' %>
+	<% end %>
   </div>
 <% end %>
 

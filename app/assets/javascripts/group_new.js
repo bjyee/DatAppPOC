@@ -24,12 +24,14 @@ gn = {
 				well.append(gn.ui.drawMemberSelectItem(data[i]));
 			}
 			if(data.length > 0){
-				well.show();	
+				well.show();
 			}
 		},
 		loadSelectedMembers : function(){
 			gn.ui.checkEmptyMsg();
-			gn.pg.members = $("#membersHidden").val().split(",");
+			if($("#membersHidden").val().length > 0){
+				gn.pg.members = $("#membersHidden").val().split(",");
+			}
 			for(var i = 0; i < gn.pg.members.length; i++){
 				var elem = $(".memCheck[value='"+gn.pg.members[i]+"']")[0];
 				if(typeof elem != "undefined"){
@@ -41,9 +43,12 @@ gn = {
 		addToSelected : function(val){
 			var elem = $(".memCheck[value='"+val+"']")[0].parentNode;
 			$(elem).appendTo("#membersAdded");
+			$("#membersHidden").val(gn.pg.members);
+			gn.ui.checkSearchBox();
 		},
 		removeFromSelected : function(val){
 			$(".memCheck[value='"+val+"']")[0].parentNode.remove();
+			gn.ui.checkEmptyMsg();
 		},
 		checkEmptyMsg : function(){
 			if(gn.pg.members.length > 0){
@@ -51,7 +56,24 @@ gn = {
 			}else{
 				$("#membersEmpty").show();	
 			}
+		},
+		checkSearchBox : function(){
+			var box = $("#membersSearched");
+			if(box.has("input").length > 0){
+				box.show();
+			}else{
+				box.hide();
+				gn.ui.searchResultsMsg(0,"");
+			}
+		},
+		searchResultsMsg : function(length, keyword){
+			if(length > 0){
+				$("#searchResultsSpan").show().html("Search for '"+keyword+"' returned "+length+" members");
+			}else{
+				$("#searchResultsSpan").hide();
+			}
 		}
+		
 	},
 	ctl : {
 		eventBinding : function(){
@@ -76,7 +98,6 @@ gn = {
 					}
 					input.checked = !input.checked;
 				}
-				$("#membersHidden").val(gn.pg.members);
 			});
 			
 			$(".memCheck").on("click",function(e){
@@ -90,6 +111,7 @@ gn = {
 					gn.ctl.getMembersByKeyword(path,keyword);
 				}else{
 					gn.ui.emptySearchWell();
+					gn.ui.searchResultsMsg(0,"");
 				}			
 			});
 		},
@@ -107,6 +129,7 @@ gn = {
 				dataType: "JSON",
 				success : function(data){
 					gn.ui.loadSearchedMembers(data);
+					gn.ui.searchResultsMsg(data.length, keyword);
 				}
 			});
 		},
@@ -115,8 +138,8 @@ gn = {
 			if(index !== -1){
 				gn.pg.members.splice(index,1);
 				gn.ui.removeFromSelected(input.value);
+				gn.ui.checkEmptyMsg();
 			}
-			gn.ui.checkEmptyMsg();
 		}
 	},
 	init : function(){

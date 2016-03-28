@@ -2,39 +2,59 @@
 	<%= stylesheet_link_tag    'group_index' %>
 	<%= javascript_include_tag 'group_index' %>
 	
+	<% if @upcomingGroups.length > 0 || @restGroups.length > 0 %>
+		<div id='group_index_create' class="col-lg-12">
+			<%= link_to "Create Group", new_group_path, class: "btn btn-primary pull-right" %>
+		</div>
+	<% end %>
+	
 	<!-- This is for groups that have upcoming events. Upcoming is usually within the next week -->
 	<% if @upcomingGroups.length > 0 %>
-		<div id="groups_upcoming" class='panel panel-default'>
-			<div class="panel-heading">
-				Groups with Upcoming events
-			</div>
-			<div class='panel-body'>
-				<% @upcomingGroups.each do |upcomingGroup| %>
-					<div class="group">
-						<div class="groupImage">
-							<img src="<%= upcomingGroup.image %>" />
+		<div class="col-lg-12">
+			<div id="groups_upcoming" class='panel panel-default'>
+				<div class="panel-heading">
+					Groups with Upcoming events
+				</div>
+				<div class='panel-body'>
+					<% @upcomingGroups.each do |upcomingGroup| %>
+						<div class="group col-lg-4">
+							<div class="groupImage pull-left">
+								<img src="<%= upcomingGroup.image %>" />
+							</div>
+							<div class="groupName"><%= link_to upcomingGroup.name, group_path(upcomingGroup.id) %></div>
+							<div class="groupDetails">
+								<div class="groupEventDate">Thur Apr 14</div>
+								<div class="groupDescription">Created by <%= upcomingGroup.user.firstname %> <%= upcomingGroup.user.lastname %></div>
+							</div>
 						</div>
-						<div class="groupName"><%= upcomingGroup.name %></div>
-						<div class="groupDescription">Created by <%= upcomingGroup.firstname %> <%= upcomingGroup.lastname %></div>
-						
-					</div>
-			    <% end %>
-		    </div>
+				    <% end %>
+			    </div>
+			</div>
 		</div>
 	<% end %>
 	
 	<!-- This is for the rest of the groups that you participate in -->
 	
 	<% if @restGroups.length > 0 %>
-		<div id="groups_rest" class='panel panel-default'>
-			<div class="panel-heading">
-				Groups you are subscribed to
-				<%= link_to "Create Group", new_group_path, class: "btn btn-default btn-xs pull-right" %>
-			</div>
-			<div class='panel-body'>
-				<% @restGroups.each do |restGroup| %>
-				
-			    <% end %>
+		<div class="col-lg-12">
+			<div id="groups_rest" class='panel panel-default'>
+				<div class="panel-heading">
+					Groups you are subscribed to
+				</div>
+				<div class='panel-body'>
+					<% @restGroups.each do |restGroup| %>
+						<div class="group col-lg-4">
+							<div class="groupImage pull-left">
+								<img src="<%= restGroup.image %>" />
+							</div>
+							<div class="groupName"><%= restGroup.name %></div>
+							<div class="groupDetails">
+								<div class="groupEventDate">Thur Apr 14</div>
+								<div class="groupDescription">Created by <%= restGroup.user.firstname %> <%= restGroup.user.lastname %></div>
+							</div>
+						</div>
+				    <% end %>
+				</div>
 			</div>
 		</div>
     <% end %>

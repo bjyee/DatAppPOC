@@ -30,6 +30,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    # Need some logic from members joint table
+    @availMembers = User.where("1 = 0")
   end
 
   # POST /groups
@@ -39,6 +41,8 @@ class GroupsController < ApplicationController
     @group = Group.new
 
     @group.name = group_params[:name]
+    
+    @group.description = group_params[:description]
 
     # image? not sure how we will do this one
     @group.image = group_params[:image]
@@ -52,19 +56,31 @@ class GroupsController < ApplicationController
     @group.who_updated_id = session[:user_id]
 
     # Send to location to get the based_in_id
-    locationId = Location.getLocationId(group_params[:city],group_params[:state])
-    if(locationId)
-      @group.based_in_id = locationId
-    else
-      @group.based_in_id = Location.createByCityState(group_params[:city],group_params[:state])
-    end
+    # locationId = Location.getLocationId(group_params[:city],group_params[:state])
+    # if(locationId)
+      # @group.based_in_id = locationId
+    # else
+      # @group.based_in_id = Location.createByCityState(group_params[:city],group_params[:state])
+    # end
     
     #Take list and add them as members
-    @members = group_params[:members]
+    memberParams = params[:group][:members]
+    if(memberParams != nil)
+      memberParams = memberParams.split(",")
+    end
+    # membersParam = group_params[:members].split(",")
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        
+        memberParams.each do |x| 
+          member = Member.new
+          member.user_id = x
+          member.group_id = @group.id
+          member.save
+        end 
+        
+        format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
         format.json { render :index, status: :created, location: @group }
       else
         format.html { render :new }
@@ -76,6 +92,9 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    
+    @group.who_updated_id = session[:user_id]
+    
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }

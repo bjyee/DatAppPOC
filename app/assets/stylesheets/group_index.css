@@ -1,3 +1,21 @@
+.group{
+	padding: 5px 15px;
+}
+
+.groupImage{
+	width: 50px;
+	height:50px;
+}
+
+.groupDetails{
+	color: #777777;
+	font-size:0.8em;
+}
+
 #groups_empty{
 	text-align:center;
+}
+
+#group_index_create{
+	padding-bottom: 15px;
 }

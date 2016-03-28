@@ -61,9 +61,7 @@ class LocationsController < ApplicationController
     end
   end
 
-  def createByCityState
-  end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location

@@ -50,28 +50,29 @@
             		</div>
 				<% end %>
 		      	<!-- Alert here -->
-		        <div id="login_error" class="alert" style="display:none"></div>
+		        <!-- <div id="login_error" class="alert" style="display:none"></div> -->
         	<% end %>
         </div>
-        <!-- Landing Flash Notice -->
-        <% if flash[:signup_notice] %>
-            <p class="alert alert-info banner bg-success col-xs-12"><%= flash[:signup_notice] %></p>
-            <script>
-                dat_landing.ui.hideAlert();
-                // had to put a delay for some reason 
-                setTimeout(dat_landing.ui.openLogin, 10);
-            </script>
-        <% end %>
-        <% if flash[:signup_error] %>
-            <p class="alert alert-error banner bg-danger col-xs-12"><%= flash[:signup_error] %></p>
-            <script>
-                dat_landing.ui.hideAlert();
-                // had to put a delay for some reason
-                setTimeout(dat_landing.ui.scrollToSignup, 10);
-            </script>
-        <% end %>
     </div>
-    <div id="applicationBody">
+    <!-- Landing Flash Notice -->
+    <% if flash[:signup_notice] %>
+        <p class="alert alert-info banner bg-success col-xs-12"><%= flash[:signup_notice] %></p>
+        <script>
+            dat_landing.ui.hideAlert();
+            // had to put a delay for some reason 
+            setTimeout(dat_landing.ui.openLogin, 10);
+        </script>
+    <% end %>
+    <% if flash[:signup_error] %>
+        <p class="alert alert-error banner bg-danger col-xs-12"><%= flash[:signup_error] %></p>
+        <script>
+            dat_landing.ui.hideAlert();
+            // had to put a delay for some reason
+            setTimeout(dat_landing.ui.scrollToSignup, 10);
+        </script>
+    <% end %>
+
+    <div id="applicationBody" class="container">
     	<%= yield %>
     </div>
 
