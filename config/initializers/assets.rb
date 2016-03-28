@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.js )
 Rails.application.config.assets.precompile += %w( landing_index.js )
 Rails.application.config.assets.precompile += %w( group_index.js )
 Rails.application.config.assets.precompile += %w( group_new.js )
+Rails.application.config.assets.precompile += %w( group_show.js )
 Rails.application.config.assets.precompile += %w( forget_password.js )
 
 # Stylesheets
@@ -17,6 +18,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( landing_index.css )
 Rails.application.config.assets.precompile += %w( group_index.css )
 Rails.application.config.assets.precompile += %w( group_new.css )
+Rails.application.config.assets.precompile += %w( group_show.css )
 Rails.application.config.assets.precompile += %w( forget_password.css )
 
 # Maps

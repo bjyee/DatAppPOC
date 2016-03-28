@@ -2,10 +2,15 @@
 	<%= stylesheet_link_tag    'group_new' %>
 	<%= javascript_include_tag 'group_new' %>
 	
+	
+	<div class="page-header" style="margin-top:0px">
+		<h2>
+			<%= @group.name %>
+			<small>Edit Group Details</small>
+		</h2>
+	</div>	
+	
 	<div class="panel panel-default">
-		<div class="panel-heading">
-			Edit Group Details
-		</div>
 		<div class="panel-body">
 			<%= render 'form' %>
 		</div>	

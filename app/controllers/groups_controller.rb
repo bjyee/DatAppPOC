@@ -19,6 +19,18 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    currentGroup = Group.find_by_id(params[:id])
+    
+    # get creator
+    groupInfo = Group.joins(:user).where(:users => {:id => currentGroup.who_created_id})[0]
+    @groupCreator = groupInfo.user.firstname+" "+groupInfo.user.lastname
+    
+    # get Events
+    @events = Event.joins(:group).where(:groups => {:id => params[:id]})
+    
+    # Get Members
+    @members = Member.joins(:user).joins(:group).where(:groups => {:id => params[:id]})
+    
   end
 
   # GET /groups/new
@@ -73,6 +85,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         
+       # Needed to do the save in here because I needed to group ID
         memberParams.each do |x| 
           member = Member.new
           member.user_id = x

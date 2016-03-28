@@ -20,9 +20,7 @@
   <body>
     <div id="headerBar" role="navigation" class="navbar navbar-default navbar-fixed-top">
         <div id="header_logo" class="navbar-header">
-            <div class="navbar-brand">
-            	hangoutScout
-            </div>
+        	<%= link_to "hangoutScout", root_path, :class => "navbar-brand" %>
         </div>
         <div id="intro_action" class="navbar-right">
             <% if session[:user_id] != nil %>
@@ -72,7 +70,7 @@
         </script>
     <% end %>
 
-    <div id="applicationBody" class="container">
+    <div id="applicationBody" class="container-fluid">
     	<%= yield %>
     </div>
 

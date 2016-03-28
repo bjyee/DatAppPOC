@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.references :group_id, index: true
+      t.references :group, index: true
       t.string :what
       t.string :when
       t.string :why

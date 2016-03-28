@@ -46,7 +46,7 @@
 							<div class="groupImage pull-left">
 								<img src="<%= restGroup.image %>" />
 							</div>
-							<div class="groupName"><%= restGroup.name %></div>
+							<div class="groupName"><%= link_to restGroup.name, group_path(restGroup.id) %></div>
 							<div class="groupDetails">
 								<div class="groupEventDate">Thur Apr 14</div>
 								<div class="groupDescription">Created by <%= restGroup.user.firstname %> <%= restGroup.user.lastname %></div>
@@ -60,7 +60,7 @@
 	
 	<!-- If there is no groups in any section, show this message -->
 	<% if @restGroups.length == 0 && @upcomingGroups.length == 0 %>
-	<div id="groups_empty">
+	<div id="groups_empty" class="help-block">
 		There are no groups available. <br>
 		You can either <%= link_to 'create a new one', new_group_path %> 
 		or join an existing group!

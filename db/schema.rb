@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
   add_index "categories", ["group_id"], name: "index_categories_on_group_id", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.integer  "group_id_id"
+    t.integer  "group_id"
     t.string   "what"
     t.string   "when"
     t.string   "why"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141129012311) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["group_id_id"], name: "index_events_on_group_id_id", using: :btree
+  add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
   add_index "events", ["who_created_id"], name: "index_events_on_who_created_id", using: :btree
   add_index "events", ["who_updated_id"], name: "index_events_on_who_updated_id", using: :btree
 
