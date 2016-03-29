@@ -29,7 +29,7 @@
             			<%= User.find(session[:user_id]).firstname %> <%= User.find(session[:user_id]).lastname %>
         			</a>
         			<ul class="dropdown-menu">
-    					<li><a href="#">View Profile</a></li>
+    					<li><%= link_to 'View Profile', user_path(session[:user_id]) %></li>
     					<li><a href="#">Preferences</a></li>
            	 			<li role="separator" class="divider"></li>
     					<li><%= link_to 'Logout', log_out_path %></li>

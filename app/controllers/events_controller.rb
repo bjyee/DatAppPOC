@@ -15,6 +15,14 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    
+    @startDate = DateTime.now.to_date
+    @endDate = DateTime.now.to_date
+    
+    @startTime = Time.now.strftime("%I:%M %p")  
+    @endTime = Time.now.strftime("%I:%M %p") 
+    
+    @timeDropdown = []
   end
 
   # GET /events/1/edit
@@ -24,7 +32,20 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new
+    
+    @event.what = event_params[:what]
+    
+    @event.why = event_params[:why]
+    
+    @event.when = event_params[:when]
+    
+    @event.where = event_params[:address1]+"//"
+    @event.where += event_params[:address2]+"//"
+    @event.where += event_params[:city]+"//"
+    @event.where += event_params[:state]+"//"
+    @event.where += event_params[:zip]
+    
 
     respond_to do |format|
       if @event.save

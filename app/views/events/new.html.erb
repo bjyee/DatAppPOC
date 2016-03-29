@@ -1,5 +1,18 @@
-<h1>New event</h1>
+<div class="contentWrapper container col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" >
+	<%= stylesheet_link_tag    'event_new' %>
+	<%= javascript_include_tag 'event_new' %>
+	
+	<div class="page-header" style="margin-top:0px">
+		<h2>
+			Create New Event
+		</h2>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<%= render 'form' %>
+		</div>	
+	</div>
+	
 
-<%= render 'form' %>
-
-<%= link_to 'Back', events_path %>
+</div>

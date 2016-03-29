@@ -10,44 +10,72 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :group_id_id %><br>
-    <%= f.text_field :group_id_id %>
+  <div class="form-group col-lg-12">
+  	<div  class='col-lg-12'>
+    	<%= f.label :what, "Name" %>
+  	</div>
+  	<div  class='col-lg-12'>
+  	  <%= f.text_field :what, :class => 'form-control' %>
+  	</div>
   </div>
-  <div class="field">
-    <%= f.label :what %><br>
-    <%= f.text_field :what %>
+  <div class="form-group col-lg-12">
+  	<div  class='col-lg-12'>
+    	<%= f.label :why, "About" %>
+  	</div>
+  	<div  class='col-lg-12'>
+  	  <%= f.text_area :why, :class => 'form-control' %>
+  	</div>
   </div>
-  <div class="field">
-    <%= f.label :when %><br>
-    <%= f.text_field :when %>
+  <div class="form-group col-lg-12">
+    <div class='col-lg-12'>
+    	<%= f.label "Date" %>
+    </div>
+    <div class='col-lg-4'>
+	    Start
+	    <%= f.date_field :startDate, :value => @startDate, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-3'>
+    	&nbsp;
+		<%= f.text_field :startTime, :value => @startTime, :class => 'form-control'%>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class='col-lg-4'>
+	    End
+	    <%= f.date_field :endDate, :value => @endDate, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-3'>
+    	&nbsp;
+		<%= f.text_field :endTime, :value => @endTime, :class => 'form-control'%>
+    </div>
+    <div class="clearfix view visible-lg-block"></div>
   </div>
-  <div class="field">
-    <%= f.label :why %><br>
-    <%= f.text_field :why %>
+  <div class="form-group col-lg-12">
+  	<div  class='col-lg-12'>
+  	  <%= f.label "Location" %>
+  	</div>
+    <div class='col-lg-12'>
+    	Address Line 1
+    	<%= f.text_field :address1, :value => @address1, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-12'>
+    	Address Line 2
+    	<%= f.text_field :address2, :value => @address2, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-5'>
+    	City
+    	<%= f.text_field :city, :value => @city, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-2'>
+    	State
+    	<%= f.text_field :state, :value => @state, :class => 'form-control' %>
+    </div>
+    <div class='col-lg-5'>
+    	Zip Code
+    	<%= f.text_field :zip, :value => @zip, :class => 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :where %><br>
-    <%= f.text_field :where %>
-  </div>
-  <div class="field">
-    <%= f.label :who_created_id %><br>
-    <%= f.text_field :who_created_id %>
-  </div>
-  <div class="field">
-    <%= f.label :datetime_created %><br>
-    <%= f.datetime_select :datetime_created %>
-  </div>
-  <div class="field">
-    <%= f.label :who_updated_id %><br>
-    <%= f.text_field :who_updated_id %>
-  </div>
-  <div class="field">
-    <%= f.label :datetime_updated %><br>
-    <%= f.datetime_select :datetime_updated %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group pull-right">
+    <%= link_to 'Cancel', groups_path, :class => 'btn btn-default'%>
+  	<%= f.submit "Create Event", :class => 'btn btn-primary' %>
   </div>
 <% end %>

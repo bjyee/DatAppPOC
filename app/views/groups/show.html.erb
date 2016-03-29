@@ -42,6 +42,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Events
+					<div class="pull-right">
+						<%= link_to "Create Event", new_event_path, :class => "btn btn-primary btn-xs"%>
+					</div>
 				</div>	
 				<div class="panel-body">
 					<% if @events.length > 0 %>
