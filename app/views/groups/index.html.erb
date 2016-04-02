@@ -19,7 +19,7 @@
 		<div class="col-lg-12">
 			<div id="groups_upcoming" class='panel panel-default'>
 				<div class="panel-heading">
-					Groups with Upcoming events
+					Upcoming
 				</div>
 				<div class='panel-body'>
 					<% @upcomingGroups.each do |upcomingGroup| %>
@@ -28,11 +28,11 @@
 								<img src="<%= upcomingGroup.image %>" />
 							</div>
 							<div class="groupInfo pull-left">
-								<div class="groupName"><%= link_to upcomingGroup.name, group_path(upcomingGroup.id) %></div>
+								<div class="groupEventName"><a href='#'>Date with Destiny</a></div>
 								<div class="groupDetails">
 									<div class="groupEventDate">Thur Apr 1st 8:00pm</div>
-									<div class="groupEventName">Date with Destiny</div>
-									<div class="groupEventCreator">with Brandon Yee</div>
+									<div class="groupName"><%= link_to upcomingGroup.name, group_path(upcomingGroup.id) %></div>
+									<div class="groupEventMembersGoing">1 Member is Going</div>
 								</div>
 							</div>
 						</div>
@@ -48,7 +48,7 @@
 		<div class="col-lg-12">
 			<div id="groups_rest" class='panel panel-default'>
 				<div class="panel-heading">
-					Groups you are subscribed to
+					Following
 				</div>
 				<div class='panel-body'>
 					<% @restGroups.each do |restGroup| %>
