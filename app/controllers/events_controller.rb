@@ -34,17 +34,15 @@ class EventsController < ApplicationController
   def create
     @event = Event.new
     
+    @event.group = Group.find_by_id(params[:group_id])
+    
     @event.what = event_params[:what]
     
     @event.why = event_params[:why]
     
-    @event.when = event_params[:when]
+    # @event.when = event_params[:when]
     
-    @event.where = event_params[:address1]+"//"
-    @event.where += event_params[:address2]+"//"
-    @event.where += event_params[:city]+"//"
-    @event.where += event_params[:state]+"//"
-    @event.where += event_params[:zip]
+    @event.where = event_params[:where]
     
 
     respond_to do |format|

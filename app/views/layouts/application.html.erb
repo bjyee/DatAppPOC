@@ -22,6 +22,21 @@
         <div id="header_logo" class="navbar-header">
         	<%= link_to "hangoutScout", root_path, :class => "navbar-brand" %>
         </div>
+        <% if session[:user_id] != nil %>
+	        <div id="searchBar" class="navbar-form navbar-left">
+	        	<div class='form-group'>
+	        		<input type='text' id='searchForGroupsEvents' class='form-control' placeholder="Search"/>
+	        		<div id="searchResultsBox" style='display:none'>
+	        			<div class='panel panel-default'>
+	        				<div class='panel-body'>
+	        					<div id='searchResultsEvents'></div>
+	        					<div id='searchResultsGroups'></div>
+	        				</div>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+        <% end %>
         <div id="intro_action" class="navbar-right">
             <% if session[:user_id] != nil %>
             	<div class="dropdown navbar-text">

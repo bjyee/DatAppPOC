@@ -15,6 +15,14 @@ class GroupsController < ApplicationController
     # Then the rest of the groups that are not upcoming
     @restGroups = Group.joins(:user).where(:users => {:id => userid})
   end
+  
+  def searchGroupEvent
+    @events = Event.where("what LIKE ?", "%"+params[:search]+"%")
+    @groups = Group.where("name LIKE ?", "%"+params[:search]+"%")
+    respond_to do |format|
+      format.json  { render :json => { :group => @groups, :event => @events}}
+    end
+  end
 
   # GET /groups/1
   # GET /groups/1.json

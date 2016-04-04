@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "sign_up" => "users#create", :as => "sign_up"
   
   get "memberSearch" => "users#search", :as => "memberSearch"
+  
+  get "groupEventSearch" => "group#searchGroupEvent", :as => "groupEventSearch"
 
   get "landing/index"
 
@@ -22,9 +24,9 @@ Rails.application.routes.draw do
 
   resources :suggested_events
 
-  resources :events
-
-  resources :groups
+  resources :groups do
+    resources :events
+  end
 
   resources :users
 
