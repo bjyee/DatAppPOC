@@ -64,3 +64,9 @@ form-inline/*
 	left:0;
 	display:none;
 }
+
+#searchResultsEvents{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 2px;
+	margin-bottom:2px;
+}

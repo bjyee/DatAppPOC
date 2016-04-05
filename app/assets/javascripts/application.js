@@ -39,34 +39,30 @@ theme = {
 			});
 		},
 		updateSearchResults : function(data){
-			var groupString;
-			var eventString;
 			if(data.group.length > 0){
 				for(var x = 0; x < data.group.length; x++){
-					groupString = "<div>";
-					groupString += "<a href='"+data.group[x].id+"'>";
+					var groupString = "<li role='presentation'>";
+					groupString += "<a href='groups/"+data.group[x].id+"'>";
 					groupString += data.group[x].name; 
 					groupString += "</a>";
-					groupString += "</div>";
+					groupString += "</li>";
 				}
-				
-				$("#searchResultsGroups").empty().show().append(groupString);
+				$("#searchResultsGroups").empty().append(groupString);
 			}else{
-				$("#searchResultsGroups").empty().hide();
+				$("#searchResultsGroups").empty().append("<small>No Groups Found</small>");
 			}
 			
 			if(data.event.length > 0){
 				for(var x = 0; x < data.event.length; x++){
-					eventString = "<div>";
-					eventString += "<a href='"+data.event[x].id+"'>";
+					var eventString = "<li role='presentation'>";
+					eventString += "<a href='events/"+data.event[x].id+"'>";
 					eventString += data.event[x].name; 
 					eventString += "</a>";
-					eventString += "</div>";
+					eventString += "</li>";
 				}
-				
-				$("#searchResultsEvents").empty().show().append(eventString);
+				$("#searchResultsEvents").empty().append(eventString);
 			}else{
-				$("#searchResultsEvents").empty().hide();
+				$("#searchResultsEvents").empty().append("<small>No Events Found</small>");
 			}
 		}
 	},
@@ -76,8 +72,7 @@ theme = {
 			$("#searchForGroupsEvents").on("keyup", function(e){
 				var val = $("#searchForGroupsEvents").val();
 				if(val.length > 0){
-					var obj = theme.ctl.getSearchResults(val);
-					theme.ui.updateSearchResults(obj);
+					theme.ctl.getSearchResults(val);
 					theme.ui.setSearchResultPosition();
 					$("#searchResultsBox").show();
 				}else{
@@ -86,18 +81,16 @@ theme = {
 			});
 		},
 		getSearchResults : function(val){
-			var obj = {"search" : keyword};
-			var results;
+			var obj = {"search" : val};
 			$.ajax({
 				url: "/searchGroupEvent",
 				type: "GET",
 				data: obj,
 				dataType: "JSON",
 				success : function(data){
-					results = data;
+					theme.ui.updateSearchResults(data);
 				}
 			});
-			return results;
 		},
 		resizeBodyHeight : function(){
 	      	$(window).resize(function(){

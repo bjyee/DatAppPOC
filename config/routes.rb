@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   get "memberSearch" => "users#search", :as => "memberSearch"
   
-  get "groupEventSearch" => "group#searchGroupEvent", :as => "groupEventSearch"
+  get "searchGroupEvent" => "groups#searchGroupEvent", :as => "searchGroupEvent"
 
   get "landing/index"
 
