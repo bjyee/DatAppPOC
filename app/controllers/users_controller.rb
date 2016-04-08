@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def search
     # Need to not include members who are already selected. Maybe pass in those already selected? Or do some join magic
     @users = User.where("firstname LIKE ? OR lastname LIKE ?", "%"+params[:search]+"%", "%"+params[:search]+"%");
+#     Need to filter out ones that already listed.
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :json => @users}

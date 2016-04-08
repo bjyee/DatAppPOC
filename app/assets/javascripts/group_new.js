@@ -107,8 +107,9 @@ gn = {
 			$("#searchInput").on("keyup", function(e){
 				var path = $("#membersPath").val();
 				var keyword = $("#searchInput").val();
+				var exclude = $("#membersHidden").val();
 				if(keyword.length > 0){
-					gn.ctl.getMembersByKeyword(path,keyword);
+					gn.ctl.getMembersByKeyword(path,keyword,exclude);
 				}else{
 					gn.ui.emptySearchWell();
 					gn.ui.searchResultsMsg(0,"");
@@ -120,8 +121,11 @@ gn = {
 			gn.ui.checkEmptyMsg();
 			gn.ui.addToSelected(input.value);
 		},
-		getMembersByKeyword : function(path, keyword){
-			var obj = {"search" : keyword};
+		getMembersByKeyword : function(path, keyword, exclude){
+			var obj = {
+				"search" : keyword,
+				"exclude" : exclude
+			};
 			$.ajax({
 				url: path,
 				type: "GET",
