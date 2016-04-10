@@ -41,28 +41,30 @@ theme = {
 		updateSearchResults : function(data){
 			if(data.group.length > 0){
 				for(var x = 0; x < data.group.length; x++){
-					var groupString = "<li role='presentation'>";
-					groupString += "<a href='groups/"+data.group[x].id+"'>";
-					groupString += data.group[x].name; 
+					var groupString = "<div class='hoverHeader'>";
+					groupString += "<a href='groups/"+data.group[x].id+"' class='noStyleLink header'>";
+					groupString += "<div>"+data.group[x].name+"</div>";
+					groupString += "<small><div>"+data.group[x].category+"</div></small>";
 					groupString += "</a>";
-					groupString += "</li>";
+					groupString += "</div>";
 				}
 				$("#searchResultsGroups").empty().append(groupString);
 			}else{
-				$("#searchResultsGroups").empty().append("<small>No Groups Found</small>");
+				$("#searchResultsGroups").empty().append("<small style='color:#AAA'>No Groups Found</small>");
 			}
 			
 			if(data.event.length > 0){
 				for(var x = 0; x < data.event.length; x++){
-					var eventString = "<li role='presentation'>";
-					eventString += "<a href='events/"+data.event[x].id+"'>";
-					eventString += data.event[x].name; 
+					var eventString = "<div class='hoverHeader'>";
+					eventString += "<a href='events/"+data.event[x].id+"' class='noStyleLink'>";
+					eventString += "<div>"+data.event[x].name+"</div>";
+					eventString += "<div>"+data.event[x].when+"</div>";
 					eventString += "</a>";
-					eventString += "</li>";
+					eventString += "</div>";
 				}
 				$("#searchResultsEvents").empty().append(eventString);
 			}else{
-				$("#searchResultsEvents").empty().append("<small>No Events Found</small>");
+				$("#searchResultsEvents").empty().append("<small style='color:#AAA'>No Events Found</small>");
 			}
 		}
 	},

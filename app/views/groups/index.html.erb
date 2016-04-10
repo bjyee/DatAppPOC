@@ -24,17 +24,27 @@
 				<div class='panel-body'>
 					<% @upcomingGroups.each do |upcomingGroup| %>
 						<div class="group col-lg-4">
-							<div class="groupImage pull-left">
-								<img src="<%= upcomingGroup.image %>" />
-							</div>
-							<div class="groupInfo pull-left">
-								<div class="groupEventName"><a href='#'>Date with Destiny</a></div>
-								<div class="groupDetails">
-									<div class="groupEventDate">Thur Apr 1st 8:00pm</div>
-									<div class="groupName"><%= link_to upcomingGroup.name, group_path(upcomingGroup.id) %></div>
-									<div class="groupEventMembersGoing">1 Member is Going</div>
+							<a href="<%= group_path(upcomingGroup.id) %>" class='noStyleLink'>
+								<div class='panel panel-default groupSelectLinkPanel'>
+									<div class='panel-body'>
+										<center>
+											<div class="groupImage">
+													<img src="<%= upcomingGroup.image %>" class='img-thumbnail'/>
+											</div>
+											<div class="groupName"><h4><%= upcomingGroup.name %></h4></div>
+										</center>
+										<div class="eventInfo">
+											<div>
+												Date with Destiny 
+											</div>
+											<div class="groupDetails">
+												<div class="groupEventDate">Thur Apr 14</div>
+												<div class="groupDescription">1 other is going</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 				    <% end %>
 			    </div>
@@ -53,14 +63,27 @@
 				<div class='panel-body'>
 					<% @restGroups.each do |restGroup| %>
 						<div class="group col-lg-4">
-							<div class="groupImage pull-left">
-								<img src="<%= restGroup.image %>" />
-							</div>
-							<div class="groupName"><%= link_to restGroup.name, group_path(restGroup.id) %></div>
-							<div class="groupDetails">
-								<div class="groupEventDate">Thur Apr 14</div>
-								<div class="groupDescription">Created by <%= restGroup.user.firstname %> <%= restGroup.user.lastname %></div>
-							</div>
+							<a href="<%= group_path(restGroup.id) %>" class='groupSelectLink'>
+								<div class='panel panel-default groupSelectLinkPanel'>
+									<div class='panel-body'>
+										<center>
+											<div class="groupImage">
+													<img src="<%= restGroup.image %>" class='img-thumbnail'/>
+											</div>
+											<div class="groupName"><h4><%= restGroup.name %></h4></div>
+										</center>
+										<div class="eventInfo">
+											<div>
+												Date with Destiny 
+											</div>
+											<div class="groupDetails">
+												<div class="groupEventDate">Thur Apr 14</div>
+												<div class="groupDescription">1 other is going</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
 						</div>
 				    <% end %>
 				</div>

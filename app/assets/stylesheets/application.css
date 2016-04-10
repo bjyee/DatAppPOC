@@ -42,6 +42,20 @@ form-inline/*
 	padding-top:65px;
 }
 
+.noStyleLink, .noStyleLink:hover, .noStyleLink:active{
+	text-decoration:none;
+	color: #111;
+}
+
+.hoverHeader{
+	border-radius:5px;
+	padding:5px;
+}
+
+.hoverHeader:hover{
+	background-color:#EEEEEE;
+}
+
 #applicationBody{
 	padding:0px;
 }
@@ -67,6 +81,6 @@ form-inline/*
 
 #searchResultsEvents{
 	border-bottom: 1px solid #ddd;
-	padding-bottom: 2px;
-	margin-bottom:2px;
+	padding-bottom: 15px;
+	margin-bottom:15px;
 }
