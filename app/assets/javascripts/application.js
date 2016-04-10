@@ -40,9 +40,10 @@ theme = {
 		},
 		updateSearchResults : function(data){
 			if(data.group.length > 0){
+				var groupString = "";
 				for(var x = 0; x < data.group.length; x++){
-					var groupString = "<div class='hoverHeader'>";
-					groupString += "<a href='groups/"+data.group[x].id+"' class='noStyleLink header'>";
+					groupString += "<div class='hoverHeader'>";
+					groupString += "<a href='/groups/"+data.group[x].id+"' class='noStyleLink header'>";
 					groupString += "<div>"+data.group[x].name+"</div>";
 					groupString += "<small><div>"+data.group[x].category+"</div></small>";
 					groupString += "</a>";
@@ -54,8 +55,9 @@ theme = {
 			}
 			
 			if(data.event.length > 0){
+				var eventString = "";
 				for(var x = 0; x < data.event.length; x++){
-					var eventString = "<div class='hoverHeader'>";
+					eventString += "<div class='hoverHeader'>";
 					eventString += "<a href='events/"+data.event[x].id+"' class='noStyleLink'>";
 					eventString += "<div>"+data.event[x].name+"</div>";
 					eventString += "<div>"+data.event[x].when+"</div>";
@@ -80,6 +82,19 @@ theme = {
 				}else{
 					$("#searchResultsBox").hide();
 				}
+			});
+			
+			$("#searchForGroupsEvents").on("focus", function(){
+				var val = $("#searchForGroupsEvents").val();
+				if(val.length > 0){
+					$("#searchResultsBox").show();
+				}else{
+					$("#searchResultsBox").hide();
+				}
+			});
+			
+			$("#searchForGroupsEvents").on("blur", function(){
+				setTimeout($("#searchResultsBox").hide, 100);
 			});
 		},
 		getSearchResults : function(val){

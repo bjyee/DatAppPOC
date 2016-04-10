@@ -2,9 +2,12 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.references :group, index: true
-      t.string :what
-      t.string :when
-      t.string :why
+      t.string :name
+      t.date :startdate
+      t.timestamp :starttime
+      t.date :enddate
+      t.timestamp :endtime
+      t.string :description
       t.string :where
       t.references :who_created, index: true
       t.datetime :datetime_created

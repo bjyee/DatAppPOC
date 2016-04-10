@@ -1,39 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="contentWrapper container col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" >
+	<%= stylesheet_link_tag    'user_show' %>
+	<%= javascript_include_tag 'user_show' %>
+	
+	<div class="page-header" style="margin-top:0px">
+		<h2>
+			Profile Settings
+		</h2>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class='col-lg-3'>
+				<strong>Name</strong>
+			</div>
+			<div class='col-lg-9'>
+				<span class='help-block' style='margin-top:0px'><%= @user.firstname %> <%= @user.lastname %></span>
+			</div>
+			<div class='clearfix'></div>
+			<div class='col-lg-3'>
+				<strong>Email</strong>
+			</div>
+			<div class='col-lg-9'>
+				<span class='help-block' style='margin-top:0px'><%= @user.email %></span>
+			</div>
+			<div class='clearfix'></div>
+		</div>	
+	</div>
+	
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
-</p>
-
-<p>
-  <strong>Is editor:</strong>
-  <%= @user.is_editor %>
-</p>
-
-<p>
-  <strong>Is viewer:</strong>
-  <%= @user.is_viewer %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
