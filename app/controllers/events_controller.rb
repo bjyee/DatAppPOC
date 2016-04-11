@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @group = Group.find_by_id(params[:group_id])
     @event = Event.new
     
     @startDate = DateTime.now.to_date

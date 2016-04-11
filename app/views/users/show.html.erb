@@ -3,29 +3,101 @@
 	<%= javascript_include_tag 'user_show' %>
 	
 	<div class="page-header" style="margin-top:0px">
-		<h2>
-			Profile Settings
-		</h2>
+		<h2>Profile Settings</h2>
 	</div>
 	
-	<div class="panel panel-default">
+	<div id='profileDetails' class="panel panel-default">
 		<div class="panel-body">
+			<input type='hidden' id='hiddenUserId' value='<%= @user.id %>' style='display:none' />
 			<div class='col-lg-3'>
 				<strong>Name</strong>
 			</div>
-			<div class='col-lg-9'>
-				<span class='help-block' style='margin-top:0px'><%= @user.firstname %> <%= @user.lastname %></span>
+			<div class='col-lg-6'>
+				<span id='readOnlyFirstLast' class='help-block col-lg-12' style='margin-top:0px'>
+					<%= @user.firstname %> <%= @user.lastname %>
+				</span>
+				
+				<div id='updateUserFirstLast' class='well well-sm col-lg-12' style='display:none'>
+            		<div class='form-group col-lg-6'>
+            			<label>First Name</label>
+            			<input type='text' name='firstname' class='form-control' placeholder='First Name' value='<%= @user.firstname %>'/>
+            		</div>
+            		<div class='form-group col-lg-6'>
+            			<label>Last Name</label>
+            			<input type='text' name='lastname' class='form-control' placeholder='Last Name' value='<%= @user.lastname %>'/>	
+            		</div>
+            		<div class='form-group col-lg-12'>
+            			<button class='btn btn-primary pull-right submit-btn' data-submit-name='FirstLast' style='margin-left:10px'>Save Changes</button>
+            			<button class='btn btn-default pull-right cancel-btn' data-cancel-name='FirstLast'>Cancel</button>
+            		</div>
+				</div>
 			</div>
+			<div class='col-lg-3'>
+				<a id='editFirstLastLink' class='edit-lnk' data-edit-name="FirstLast" href="#">Edit</a>
+			</div>
+			
 			<div class='clearfix'></div>
+			
 			<div class='col-lg-3'>
 				<strong>Email</strong>
 			</div>
-			<div class='col-lg-9'>
-				<span class='help-block' style='margin-top:0px'><%= @user.email %></span>
+			<div class='col-lg-6'>
+				<span id='readOnlyEmail' class='help-block col-lg-12' style='margin-top:0px'>
+					<%= @user.email %>
+				</span>
+				
+				<div id='updateUserEmail' class='well well-sm col-lg-12' style='display:none'>
+            		<div class='form-group col-lg-12'>
+            			<label>Email</label>
+            			<input type='text' name='email' class='form-control' placeholder='Email' value='<%= @user.email %>'/>
+            		</div>
+            		<div class='form-group col-lg-12'>
+            			<button class='btn btn-primary pull-right submit-btn' data-submit-name='Email' style='margin-left:10px'>Save Changes</button>
+            			<button class='btn btn-default pull-right cancel-btn' data-cancel-name='Email'>Cancel</button>
+            		</div>
+				</div>
 			</div>
+			<div class='col-lg-3'>
+				<a id='editEmailLink' class='edit-lnk' data-edit-name="Email" href="#">Edit</a>
+			</div>
+			
+			<div class='clearfix'></div>
+			
+			<div class='col-lg-3'>
+				<strong>Password</strong>
+			</div>
+			<div class='col-lg-6'>
+				<span id='readOnlyPassword' class='help-block col-lg-12' style='margin-top:0px'>
+					********
+				</span>
+				
+				<div id='updateUserPassword' class='well well-sm col-lg-12' style='display:none'>
+            		<div class='form-group col-lg-12'>
+            			<label>Existing Password</label>
+            			<input type='password' name='passwordOld' class='form-control' placeholder='Existing Password' />
+            		</div>
+            		<div class='form-group col-lg-12'>
+            			<label>New Password</label>
+            			<input type='password' name='password' class='form-control' placeholder='New Password' />
+            		</div>
+            		<div class='form-group col-lg-12'>
+            			<label>Confirm New Password</label>
+            			<input type='password' name='password_confirmation' class='form-control' placeholder='Password Confirm' />
+            		</div>
+            		<div class='form-group col-lg-12'>
+            			<button class='btn btn-primary pull-right submit-btn' data-submit-name='Password' style='margin-left:10px'>Save Changes</button>
+            			<button class='btn btn-default pull-right cancel-btn' data-cancel-name='Password'>Cancel</button>
+            		</div>
+				</div>
+			</div>
+			<div class='col-lg-3'>
+				<a id='editPasswordLink' class='edit-lnk' data-edit-name="Password" href="#">Edit</a>
+			</div>
+			
 			<div class='clearfix'></div>
 		</div>	
 	</div>
-	
-
 </div>
+<script>
+	us.init();
+</script>

@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
       nil
     end
   end
+  
+  def self.validate(user, password)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      true
+    else
+      false
+    end
+  end
 
   def encrypt_password
     if password.present?

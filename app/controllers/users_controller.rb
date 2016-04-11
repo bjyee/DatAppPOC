@@ -25,6 +25,33 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   end
+  
+  def update_profile 
+    @user = User.find_by_id(params[:id])
+    if user_params[:firstname]
+      @user.firstname = user_params[:firstname]
+    end
+    if user_params[:lastname]
+      @user.lastname = user_params[:lastname]
+    end
+    if user_params[:email]
+      @user.email = user_params[:email]
+    end
+    if user_params[:password]
+      if User.validate(@user,user_params[:password])
+        if user_params[:password] == user_params[:password_confirmation]
+          @user.password = user_params[:password]
+        end
+      end
+    end
+    respond_to do |format|
+      if @user.save({validate: false})
+        format.json { render :json => @user, status: :ok}
+      else
+        format.json { render :json => @user.errors, status: :unprocessable_entity}
+      end
+    end
+  end
 
   # GET /users/new
   def new

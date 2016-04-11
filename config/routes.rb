@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "memberSearch" => "users#search", :as => "memberSearch"
   
   get "searchGroupEvent" => "groups#searchGroupEvent", :as => "searchGroupEvent"
+  
+  post "update_profile" => "users#update_profile", :as => "update_profile"
 
   get "landing/index"
 
